@@ -9,9 +9,9 @@ class SecretsPage extends Component {
   render() {
     return (
       <div>
-        <p>Currently logged in as <b>{this.props.user.username}</b></p>
+        <h1 id="welcome">Hey, {this.props.user.username}!</h1>
         <ul>
-          {this.props.secrets.map(secret => (
+          {this.props.secrets.map((secret) => (
             <li>
               Clearance: {secret.secrecy_level} | Content: {secret.content}
             </li>

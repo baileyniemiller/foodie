@@ -25,8 +25,6 @@ class UserPage extends Component {
     return (
       <div>
         <div>
-          <h1 id="welcome">Hey, {this.props.username}!</h1>
-          {/* <p>Your username is: {props.user.username}</p> */}
           <LogOutButton className="log-in" />
         </div>
         <div className="app">
