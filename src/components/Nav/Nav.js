@@ -20,7 +20,7 @@ const Nav = (props) => (
       {props.user.id && (
         <>
           <Link className="nav-link" to="/secrets">
-            Secrets Page
+            My Profile
           </Link>
           <LogOutButton className="nav-link"/>
         </>
