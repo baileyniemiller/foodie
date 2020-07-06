@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 class RegisterPage extends Component {
   state = {
+    firstName: '',
     username: '',
     password: '',
   };
@@ -14,6 +15,7 @@ class RegisterPage extends Component {
       this.props.dispatch({
         type: 'REGISTER',
         payload: {
+          firstName: this.state.firstName,
           username: this.state.username,
           password: this.state.password,
         },
@@ -33,15 +35,23 @@ class RegisterPage extends Component {
     return (
       <div>
         {this.props.errors.registrationMessage && (
-          <h2
-            className="alert"
-            role="alert"
-          >
+          <h2 className="alert" role="alert">
             {this.props.errors.registrationMessage}
           </h2>
         )}
         <form onSubmit={this.registerUser}>
           <h1>Register User</h1>
+          <div>
+            <label htmlFor="firstName">
+              First Name:
+              <input
+                type="text"
+                name="firstName"
+                value={this.state.firstName}
+                onChange={this.handleInputChangeFor("firstName")}
+              />
+            </label>
+          </div>
           <div>
             <label htmlFor="username">
               Username:
@@ -49,7 +59,7 @@ class RegisterPage extends Component {
                 type="text"
                 name="username"
                 value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
+                onChange={this.handleInputChangeFor("username")}
               />
             </label>
           </div>
@@ -60,7 +70,7 @@ class RegisterPage extends Component {
                 type="password"
                 name="password"
                 value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
+                onChange={this.handleInputChangeFor("password")}
               />
             </label>
           </div>
@@ -74,10 +84,13 @@ class RegisterPage extends Component {
           </div>
         </form>
         <center>
+          Already have a Foodie account?{" "}
           <button
             type="button"
             className="link-button"
-            onClick={() => {this.props.dispatch({type: 'SET_TO_LOGIN_MODE'})}}
+            onClick={() => {
+              this.props.dispatch({ type: "SET_TO_LOGIN_MODE" });
+            }}
           >
             Login
           </button>
@@ -88,8 +101,6 @@ class RegisterPage extends Component {
 }
 
 // Instead of taking everything from state, we just want the error messages.
-// if you wanted you could write this code like this:
-// const mapStateToProps = ({errors}) => ({ errors });
 const mapStateToProps = state => ({
   errors: state.errors,
 });
