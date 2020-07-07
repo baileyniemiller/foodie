@@ -8,7 +8,7 @@ import './Footer.css'
 
 const Footer = () => (
   <footer>
-    &copy; Secure Submarine Navy
+    &copy; 2020 Foodie
   </footer>
 );
 
