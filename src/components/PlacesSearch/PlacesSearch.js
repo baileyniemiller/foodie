@@ -51,7 +51,9 @@ class UserPage extends Component {
               <h1>{place.name}</h1>
               <h2>{place.formatted_address}</h2>
               <h3>Rating: {place.rating}</h3>
-              <FavoriteRoundedIcon color="secondary"/> <StarRoundedIcon color="primary"/> <NotInterestedRoundedIcon color="error"/>
+              <FavoriteRoundedIcon color="secondary" onClick={(event) => {this.props.dispatch({ type: "ADD_FAVORITE", payload: place })}}/> 
+              <StarRoundedIcon className="star"/> 
+              <NotInterestedRoundedIcon color="error"/>
             </div>
           ))}
         </div>
@@ -66,22 +68,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(UserPage);
-
-// const UserPage = (props) => (
-
-// <div>
-//   <h1 id="welcome">
-//     Hey, { props.user.username }!
-//   </h1>
-//   {/* <p>Your username is: {props.user.username}</p> */}
-//   <LogOutButton className="log-in" />
-// </div>
-// );
-
-// // Instead of taking everything from state, we just want the user info.
-// const mapStateToProps = state => ({
-//   user: state.user,
-// });
-
-// // this allows us to use <App /> in index.js
-// export default connect(mapStateToProps)(UserPage);
