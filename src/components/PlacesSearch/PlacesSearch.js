@@ -51,9 +51,9 @@ class UserPage extends Component {
               <h1>{place.name}</h1>
               <h2>{place.formatted_address}</h2>
               <h3>Rating: {place.rating}</h3>
-              <FavoriteRoundedIcon color="secondary" onClick={(event) => {this.props.dispatch({ type: "ADD_FAVORITE", payload: place })}}/> 
-              <StarRoundedIcon className="star"/> 
-              <NotInterestedRoundedIcon color="error"/>
+              <FavoriteRoundedIcon color="secondary" onClick={() => {this.props.dispatch({ type: "ADD_FAVORITE", payload: place })}}/> 
+              <StarRoundedIcon className="star" onClick={() => {this.props.dispatch({ type: "ADD_WANT", payload: place })}}/> 
+              <NotInterestedRoundedIcon color="error" onClick={() => {this.props.dispatch({ type: "ADD_NOGO", payload: place })}}/>
             </div>
           ))}
         </div>
