@@ -29,9 +29,8 @@ class App extends Component {
     return (
       <Router>
         <div>
-          {/* {path="/home" ? <HomeNav /> : <Nav />} */}
           {/* <Nav /> */}
-          <HomeNav />
+          {/* <HomeNav /> */}
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />

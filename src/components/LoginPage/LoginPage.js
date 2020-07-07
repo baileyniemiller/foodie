@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-import submarineLogo from './submarine.svg';
+import Nav from '../Nav/Nav';
 
 class LoginPage extends Component {
   state = {
@@ -34,6 +33,9 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
+        <div>
+          <Nav />
+        </div>
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
@@ -83,9 +85,6 @@ class LoginPage extends Component {
           >
             Create Account
           </button>
-        </center>
-        <center>
-          <img src={submarineLogo} height="200px" />
         </center>
       </div>
     );

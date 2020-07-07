@@ -33,3 +33,50 @@
 .nav-right {
   float: right;
 } */
+
+.nav-title {
+    font-size: 45px;
+    display: inline-block;
+    color: #E23D3D;
+    font-family: 'Pacifico', cursive;
+    padding-left: 10px;
+}
+
+.nav {
+  overflow: hidden;
+}
+
+.nav-link {
+  float: left;
+  color: #EAB95D;
+  text-align: center;
+  padding: 24px 10px;
+  text-decoration: none;
+  font-size: 20px;
+
+  /* these last two make the logout button in
+  the nav bar look like another link */
+  border:none;
+  cursor: pointer;
+  outline:0;
+}
+
+#logout {
+  float: left;
+  color: #EAB95D;
+  text-align: center;
+  padding: 24px 10px;
+  text-decoration: none;
+  font-size: 20px;
+  border: none;
+  background-color: none;
+  outline: 0;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.nav-right {
+  float: right;
+}

@@ -5,6 +5,7 @@ import axios from "axios";
 import NotInterestedRoundedIcon from "@material-ui/icons/NotInterestedRounded";
 import StarRoundedIcon from "@material-ui/icons/StarRounded";
 import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
+import HomeNav from '../HomeNav/HomeNav';
 import './PlacesSearch.css';
 
 class UserPage extends Component {
@@ -28,8 +29,9 @@ class UserPage extends Component {
   render() {
     return (
       <div>
+        <HomeNav />
         <div>
-          <LogOutButton className="log-in" />
+          {/* <LogOutButton className="log-in" /> */}
         </div>
         <div className="app">
           <header className="appHeader">
