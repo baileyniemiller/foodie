@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import axios from "axios";
+import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
+import StarBorderRoundedIcon from "@material-ui/icons/StarBorderRounded";
+import NotInterestedRoundedIcon from "@material-ui/icons/NotInterestedRounded";
+import StarRoundedIcon from "@material-ui/icons/StarRounded";
+import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
 
 class UserPage extends Component {
   
@@ -46,6 +51,7 @@ class UserPage extends Component {
               <h1>{place.name}</h1>
               <h2>{place.formatted_address}</h2>
               <h3>Rating: {place.rating}</h3>
+              <FavoriteRoundedIcon color="secondary"/> <StarRoundedIcon color="primary"/> <NotInterestedRoundedIcon color="error"/>
             </div>
           ))}
         </div>
