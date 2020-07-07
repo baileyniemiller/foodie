@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import axios from "axios";
-import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
-import StarBorderRoundedIcon from "@material-ui/icons/StarBorderRounded";
 import NotInterestedRoundedIcon from "@material-ui/icons/NotInterestedRounded";
 import StarRoundedIcon from "@material-ui/icons/StarRounded";
 import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
+import './PlacesSearch.css';
 
 class UserPage extends Component {
   
