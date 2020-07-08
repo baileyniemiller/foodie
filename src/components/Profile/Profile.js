@@ -24,6 +24,18 @@ class SecretsPage extends Component {
         favorites: responseData,
       });
     });
+    axios.get(`/wants/${this.props.user.id}`).then((response) => {
+      const wantData = response.data;
+      this.setState({
+        wants: wantData,
+      });
+    });
+    axios.get(`/nogo/${this.props.user.id}`).then((response) => {
+      const nogoData = response.data;
+      this.setState({
+        nogos: nogoData,
+      });
+    });
   };
 
   render() {
@@ -33,9 +45,17 @@ class SecretsPage extends Component {
         <h1 id="welcome">Hey, {this.props.user.username}!</h1>
         <ul>
           {this.state.favorites.map((place) => (
-            <li>
-              {place.name}
-            </li>
+            <li>{place.name}</li>
+          ))}
+        </ul>
+        <ul>
+          {this.state.wants.map((place) => (
+            <li>{place.name}</li>
+          ))}
+        </ul>
+        <ul>
+          {this.state.nogos.map((place) => (
+            <li>{place.name}</li>
           ))}
         </ul>
       </div>

@@ -3,15 +3,17 @@ const router = express.Router();
 const pool = require("../modules/pool");
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
+
 /* 
   In the favorite.router file, it contains the GET, POST, and DELETE
   routes to handle anything in the user's Favorites List from the
   database. 
 */
 
+
 // GET /favorites
 router.get("/:id", (req, res) => {
-  console.log("GET /favorite");
+  console.log("GET /favorites");
   console.log('is authenticated? ', req.isAuthenticated());
   console.log('user ', req.user);
   const userId = req.user.id;
@@ -33,7 +35,7 @@ router.get("/:id", (req, res) => {
 // POST /favorites
 router.post("/", rejectUnauthenticated, (req, res) => {
   if (req.isAuthenticated() === false) {
-    res.sendStatus(403); //woah woah woah!!! You are not allowed to see this.
+    res.sendStatus(403); //woah woah woah!!! You are not allowed
     return;
   }
   // sample of req.body: {
@@ -64,5 +66,6 @@ router.post("/", rejectUnauthenticated, (req, res) => {
     });
 }); 
 // end POST /favorites
+
 
 module.exports = router;
