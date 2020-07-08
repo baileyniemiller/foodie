@@ -11,7 +11,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 */
 
 
-// GET /favorites
+// GET /favorites/id
 router.get("/:id", (req, res) => {
   console.log("GET /favorites");
   console.log('is authenticated? ', req.isAuthenticated());
@@ -29,7 +29,7 @@ router.get("/:id", (req, res) => {
       res.sendStatus(500);
     });
 });
-// end GET /favorites
+// end GET /favorites/id
 
 
 // POST /favorites
@@ -64,8 +64,28 @@ router.post("/", rejectUnauthenticated, (req, res) => {
       console.log(`Error on query to the list table ${error}`);
       res.sendStatus(500);
     });
-}); 
+});
 // end POST /favorites
+
+
+// DELETE /favorites/userId/placeId
+router.delete("/:userId/:placeId", (req, res) => {
+  console.log("DELETE /favorites/:userId/:placeId");
+  const user = req.user;
+  const place=req.body;
+  const queryText = 'DELETE FROM "list" WHERE (user_id=$1 AND list_id=$2)';
+  const queryValue = [user.id, place.id] ;
+  pool
+    .query(queryText, queryValue)
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log("Error deleting place", error);
+      res.sendStatus(500);
+    });
+});
+// end DELETE /favorites/userId/placeId
 
 
 module.exports = router;

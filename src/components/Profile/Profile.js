@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Nav from '../Nav/Nav';
 import axios from 'axios';
 import './Profile.css';
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 class SecretsPage extends Component {
 
@@ -45,17 +46,26 @@ class SecretsPage extends Component {
         <h1 id="welcome">Hey, {this.props.user.username}!</h1>
         <ul>
           {this.state.favorites.map((place) => (
-            <li>{place.name}</li>
+            <div>
+              <li>{place.name}</li>
+              <HighlightOffIcon onClick={() => {this.props.dispatch({ type: "DELETE_FAVORITE", payload: place })}}/>
+            </div>
           ))}
         </ul>
         <ul>
           {this.state.wants.map((place) => (
-            <li>{place.name}</li>
+            <div>
+              <li>{place.name}</li>
+              <HighlightOffIcon />
+            </div>
           ))}
         </ul>
         <ul>
           {this.state.nogos.map((place) => (
-            <li>{place.name}</li>
+            <div>
+              <li>{place.name}</li>
+              <HighlightOffIcon />
+            </div>
           ))}
         </ul>
       </div>
