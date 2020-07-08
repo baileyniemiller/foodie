@@ -28,7 +28,7 @@ class UserPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className="homeBody">
         <HomeNav />
         <div>
           {/* <LogOutButton className="log-in" /> */}
@@ -63,7 +63,6 @@ class UserPage extends Component {
   }
 }
 
-// Instead of taking everything from state, we just want the error messages.
 const mapStateToProps = (state) => ({
   user: state.user,
 });

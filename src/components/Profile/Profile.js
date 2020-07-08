@@ -1,22 +1,40 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Nav from '../Nav/Nav';
+import axios from 'axios';
 import './Profile.css';
 
 class SecretsPage extends Component {
-  componentDidMount() {
-    this.props.dispatch({type: 'FETCH_SECRETS'});
+
+  state = {
+    favorites: [],
+    wants: [],
+    nogos: [],
   }
+
+  // componentDidMount() {
+  //   this.props.dispatch({type: 'FETCH_FAVORITES'});
+  // }
+
+  componentDidMount() {
+    axios.get(`/favorites/${this.props.user.id}`).then((response) => {
+      const responseData = response.data;
+      console.log(responseData);
+      this.setState({
+        favorites: responseData,
+      });
+    });
+  };
 
   render() {
     return (
-      <div>
+      <div className="profileBody">
         <Nav />
         <h1 id="welcome">Hey, {this.props.user.username}!</h1>
         <ul>
-          {this.props.secrets.map((secret) => (
+          {this.state.favorites.map((place) => (
             <li>
-              Clearance: {secret.secrecy_level} | Content: {secret.content}
+              {place.name}
             </li>
           ))}
         </ul>
@@ -28,6 +46,7 @@ class SecretsPage extends Component {
 const mapStateToProps = state => ({
   secrets: state.secrets,
   user: state.user,
+  favorite: state.favorite,
 });
 
 export default connect(mapStateToProps)(SecretsPage);
