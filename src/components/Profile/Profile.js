@@ -14,13 +14,14 @@ class SecretsPage extends Component {
   }
 
   // componentDidMount() {
-  //   this.props.dispatch({type: 'FETCH_FAVORITES'});
+  //   this.props.dispatch({ type: 'FETCH_FAVORITES' });
+  //   this.props.dispatch({ type: "FETCH_WANT" });
+  //   this.props.dispatch({ type: "FETCH_NOGOS" });
   // }
 
   componentDidMount() {
     axios.get(`/favorites/${this.props.user.id}`).then((response) => {
       const responseData = response.data;
-      console.log(responseData);
       this.setState({
         favorites: responseData,
       });
@@ -56,7 +57,7 @@ class SecretsPage extends Component {
           {this.state.wants.map((place) => (
             <div>
               <li>{place.name}</li>
-              <HighlightOffIcon />
+              <HighlightOffIcon onClick={() => {this.props.dispatch({ type: "DELETE_WANT", payload: place })}}/>
             </div>
           ))}
         </ul>
@@ -64,7 +65,7 @@ class SecretsPage extends Component {
           {this.state.nogos.map((place) => (
             <div>
               <li>{place.name}</li>
-              <HighlightOffIcon />
+              <HighlightOffIcon onClick={() => {this.props.dispatch({ type: "DELETE_NOGO", payload: place })}}/>
             </div>
           ))}
         </ul>
@@ -74,9 +75,10 @@ class SecretsPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  secrets: state.secrets,
   user: state.user,
-  favorite: state.favorite,
+  favorites: state.favorites,
+  nogo: state.nogo,
+  want: state.want,
 });
 
 export default connect(mapStateToProps)(SecretsPage);

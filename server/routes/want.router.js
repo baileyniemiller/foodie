@@ -32,6 +32,7 @@ router.get("/:id", (req, res) => {
 // end GET /wants
 
 
+// POST /wants
 router.post("/", rejectUnauthenticated, (req, res) => {
   if (req.isAuthenticated() === false) {
     res.sendStatus(403); //woah woah woah!!! You are not allowed
@@ -65,6 +66,27 @@ router.post("/", rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     });
 });
+// end POST /wants
+
+
+// DELETE /wants/userId/placeId
+router.delete("/:userId/:placeId", (req, res) => {
+  console.log("DELETE /wants/:userId/:placeId");
+  const user = req.user;
+  const place=req.body;
+  const queryText = 'DELETE FROM "list" WHERE (user_id=$1 AND list_id=$2)';
+  const queryValue = [user.id, place.id] ;
+  pool
+    .query(queryText, queryValue)
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log("Error deleting place from wants", error);
+      res.sendStatus(500);
+    });
+});
+// end DELETE /wants/userId/placeId
 
 
 module.exports = router;

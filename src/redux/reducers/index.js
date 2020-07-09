@@ -3,7 +3,7 @@ import errors from './errorsReducer';
 import loginMode from './loginModeReducer';
 import user from './userReducer';
 import secrets from './secretsReducer';
-import favorite from './favoriteReducer';
+import favorites from './favoriteReducer';
 import want from "./wantReducer";
 import nogo from "./nogoReducer";
 
@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
   user, // will have a first name, an id and username if someone is logged in
   secrets,
-  favorite, // contains the favorited restaurant
+  favorites, // contains the favorited restaurant
   want, // contains the restaurand added to Want-To-Go
   nogo // contains the restaurant added to No-Go
 });
