@@ -28,8 +28,9 @@ function* addFavorite(action) {
 // will be fired on DELETE_FAVORITE
 function* deleteFavorite(action) {
   try {
-    yield axios.delete(`/favorites/${action.payload.user_id}/${action.payload.list_id}`, action.payload);
-    // yield put({ type: "FETCH_FAVORITES", payload: action.payload });
+    yield axios.delete(`/favorites`, action.payload);
+    console.log('I think this is deleting?')
+    // yield put({ type: "SET_FAVORITES", payload: action.payload });
   } catch (error) {
     console.log("Error with deleting favorite:", error);
     // yield put({ type: "REGISTRATION_FAILED" }); TO DO: FAV_FAILED

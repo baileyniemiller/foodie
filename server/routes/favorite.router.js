@@ -69,15 +69,18 @@ router.post("/", rejectUnauthenticated, (req, res) => {
 
 
 // DELETE /favorites/userId/placeId
-router.delete("/:userId/:placeId", (req, res) => {
-  console.log("DELETE /favorites/:userId/:placeId");
+router.delete("/", (req, res) => { //:userId/:placeId
+  console.log("DELETE /favorites");
+  // req.params.userId
+  // req.params.placeId
   const user = req.user;
   const place=req.body;
   const queryText = 'DELETE FROM "list" WHERE (user_id=$1 AND list_id=$2)';
-  const queryValue = [user.id, place.id] ;
+  const queryValue = [user.id, place.list_id];
   pool
     .query(queryText, queryValue)
     .then((result) => {
+      console.log('Success in deleting place.')
       res.sendStatus(200);
     })
     .catch((error) => {

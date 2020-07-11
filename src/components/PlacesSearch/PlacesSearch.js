@@ -49,9 +49,9 @@ class UserPage extends Component {
           <br />
           {this.state.restaurant.map((place) => (
             <div>
-              <h1>{place.name}</h1>
-              <h2>{place.formatted_address}</h2>
-              <h3>Rating: {place.rating}</h3>
+              <h1 id="placeName">{place.name}</h1>
+              <h2 id="placeAddress">{place.formatted_address}</h2>
+              <h3 id="placeRating">Rating: {place.rating}</h3>
               <FavoriteRoundedIcon color="secondary" onClick={() => {this.props.dispatch({ type: "ADD_FAVORITE", payload: place })}}/> 
               <StarRoundedIcon className="star" onClick={() => {this.props.dispatch({ type: "ADD_WANT", payload: place })}}/> 
               <NotInterestedRoundedIcon color="error" onClick={() => {this.props.dispatch({ type: "ADD_NOGO", payload: place })}}/>

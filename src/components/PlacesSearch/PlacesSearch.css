@@ -2,3 +2,7 @@
   margin: 0px;
   background-image: url("./food-bg.png");
 }
+
+#placeName, #placeAddress, #placeRating {
+  color: white;
+}

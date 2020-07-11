@@ -75,7 +75,7 @@ router.delete("/:userId/:placeId", (req, res) => {
   const user = req.user;
   const place=req.body;
   const queryText = 'DELETE FROM "list" WHERE (user_id=$1 AND list_id=$2)';
-  const queryValue = [user.id, place.id] ;
+  const queryValue = [user.id, place.list_id] ;
   pool
     .query(queryText, queryValue)
     .then((result) => {
