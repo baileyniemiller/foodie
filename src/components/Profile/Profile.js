@@ -10,7 +10,7 @@ import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 //  local state containing an array of restaurants for each list
 //  display of the data in each list for the user
 //  the delete handler and dispatches
-class SecretsPage extends Component {
+class ProfilePage extends Component {
 
   // setting state for each "list" to be an empty array
   state = {
@@ -103,4 +103,4 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps)(SecretsPage);
+export default connect(mapStateToProps)(ProfilePage);

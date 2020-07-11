@@ -6,6 +6,8 @@ require("dotenv").config();
 // In the restaurant router, it is simply getting the results
 // from the Google Places API based on the user's search input
 
+
+// GET /restaurants/input
 router.get(`/:input`, (req, res) => {
   axios
     .get(
@@ -16,5 +18,7 @@ router.get(`/:input`, (req, res) => {
       console.log(response.data);
     });
 });
+// end GET /restaurants/input
+
 
 module.exports = router;

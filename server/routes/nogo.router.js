@@ -13,6 +13,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 // GET /nogo
 router.get("/:id", (req, res) => {
+  console.log('GET /nogo/id');
   const userId = req.user.id;
   const queryText = `SELECT * FROM list WHERE (list_type=3 AND user_id=$1) ORDER BY name ASC`;
   const queryValue = [userId];
@@ -31,6 +32,7 @@ router.get("/:id", (req, res) => {
 
 // POST /nogo
 router.post("/", rejectUnauthenticated, (req, res) => {
+  console.log('POST /nogo');
   if (req.isAuthenticated() === false) {
     res.sendStatus(403); //woah woah woah!!! You are not allowed
     return;
@@ -76,7 +78,7 @@ router.delete("/", (req, res) => {
       res.sendStatus(500);
     });
 });
-// end DELETE /nogo/userId/placeId
+// end DELETE /nogo
 
 
 module.exports = router;

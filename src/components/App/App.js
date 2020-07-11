@@ -5,15 +5,11 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-
 import {connect} from 'react-redux';
-
 import Nav from '../Nav/Nav';
 import HomeNav from "../HomeNav/HomeNav";
 import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
-
 import AboutPage from '../AboutPage/AboutPage';
 import PlacesSearch from '../PlacesSearch/PlacesSearch';
 import Profile from '../Profile/Profile';
@@ -54,7 +50,7 @@ class App extends Component {
             they will see the secrets page instead. */}
             <ProtectedRoute
               exact
-              path="/secrets"
+              path="/profile"
               component={Profile}
             />
             {/* If none of the other routes matched, we will show a 404. */}

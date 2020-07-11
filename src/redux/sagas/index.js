@@ -2,7 +2,7 @@ import { all } from 'redux-saga/effects';
 import loginSaga from './loginSaga';
 import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
-import secretsSaga from './secretsSaga';
+import profileSaga from './profileSaga';
 import addFavoriteSaga from './addFavoriteSaga';
 import addWantSaga from './addWantSaga';
 import addNoGoSaga from "./addNoGoSaga";
@@ -19,7 +19,7 @@ export default function* rootSaga() {
     loginSaga(),
     registrationSaga(),
     userSaga(),
-    secretsSaga(),
+    profileSaga(),
     addFavoriteSaga(),
     addWantSaga(),
     addNoGoSaga(),

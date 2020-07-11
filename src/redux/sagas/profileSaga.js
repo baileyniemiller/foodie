@@ -9,7 +9,7 @@ function* fetchSecrets() {
       withCredentials: true,
     };
     
-    const response = yield axios.get('api/secrets', config);
+    const response = yield axios.get('api/profile', config); // was /api/secrets
     
     yield put({ type: 'SET_SECRETS', payload: response.data });
   } catch (error) {

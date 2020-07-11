@@ -11,7 +11,7 @@ const restaurants = require("./routes/restaurant.router.js"); // router for all 
 const favoriteRouter = require("./routes/favorite.router.js"); // router for adding places to favorites list
 const wantRouter = require("./routes/want.router.js"); // router for adding places to Want-To-Go list
 const nogoRouter = require("./routes/nogo.router.js"); // router for adding places to No-Go list
-// const secretsRouter = require('./routes/secrets.router');
+const profileRouter = require('./routes/profile.router');
 
 
 // Body parser middleware
@@ -31,7 +31,7 @@ app.use('/restaurants', restaurants);
 app.use("/favorites", favoriteRouter);
 app.use("/wants", wantRouter);
 app.use("/nogo", nogoRouter);
-// app.use('/api/secrets', secretsRouter);
+app.use('/api/profile', profileRouter);
 
 // Serve static files
 app.use(express.static('build'));

@@ -13,6 +13,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 // GET /wants
 router.get("/:id", (req, res) => {
+  console.log('GET /wants/id');
   const userId = req.user.id;
   const queryText = `SELECT * FROM list WHERE (list_type=2 AND user_id=$1) ORDER BY name ASC`;
   const queryValue = [userId];
@@ -31,6 +32,7 @@ router.get("/:id", (req, res) => {
 
 // POST /wants
 router.post("/", rejectUnauthenticated, (req, res) => {
+  console.log('POST /wants');
   if (req.isAuthenticated() === false) {
     res.sendStatus(403); //woah woah woah!!! You are not allowed
     return;

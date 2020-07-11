@@ -7,5 +7,4 @@ const wantReducer = (state = {}, action) => {
   }
 };
 
-
 export default wantReducer;

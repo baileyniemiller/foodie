@@ -35,4 +35,5 @@ function* addFavoriteSaga() {
   yield takeLatest("DELETE_FAVORITE", deleteFavorite);
 }
 
+
 export default addFavoriteSaga;

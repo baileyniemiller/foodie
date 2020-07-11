@@ -8,13 +8,24 @@ import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
 import HomeNav from '../HomeNav/HomeNav';
 import './PlacesSearch.css';
 
+// Places search page contains --> 
+//  search input for the user
+//  on click of the GO button, an axios GET request is sent
+//  to grab the results based on the user input
+//  local state is used for user search text and an array
+//  of the incoming request of restaurants
+//  results are displayed on this page.
+//  user has ability to add restaurants to their lists
 class UserPage extends Component {
   
+  // setting local state to hold user input text
+  // restaurant array of results
   state = {
     searchText: "",
     restaurant: [],
   };
 
+  // on the click of the GO button, this function will run and grab the results
   handlePlaces = () => {
     axios.get(`/restaurants/${this.state.searchText}`).then((response) => {
       const responseData = response.data;
@@ -26,6 +37,9 @@ class UserPage extends Component {
     });
   };
 
+  // in the render function, there is the search input,
+  // the GO button, and a map of the restaurant array
+  // to display the results
   render() {
     return (
       <div className="homeBody">
@@ -63,6 +77,7 @@ class UserPage extends Component {
   }
 }
 
+// bringing in the user info to use as props
 const mapStateToProps = (state) => ({
   user: state.user,
 });
