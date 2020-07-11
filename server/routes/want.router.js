@@ -13,9 +13,6 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 // GET /wants
 router.get("/:id", (req, res) => {
-  console.log("GET /wants");
-  console.log('is authenticated? ', req.isAuthenticated());
-  console.log('user ', req.user);
   const userId = req.user.id;
   const queryText = `SELECT * FROM list WHERE (list_type=2 AND user_id=$1) ORDER BY name ASC`;
   const queryValue = [userId];
@@ -43,19 +40,12 @@ router.post("/", rejectUnauthenticated, (req, res) => {
   //   formatted_address: 1234 5th ave,
   //   rating: 5
   // }
-  // pull out req.body
-  console.log("POST /wants");
-  console.log(req.body);
-  console.log('is authenticated? ', req.isAuthenticated());
-  console.log('user ', req.user);
   const newPlace = req.body;
   const user = req.user;
-  
   //set up a query to the list table to insert the user id, list_type, place name, address, and rating
   const queryText = `INSERT INTO "list" ("user_id", "list_type", "name", "address", "rating") VALUES ($1, $2, $3, $4, $5)`;
   //store the query values
   const queryValue = [user.id, 2, newPlace.name, newPlace.formatted_address, newPlace.rating];
-
   pool
     .query(queryText, queryValue)
     .then((result) => {
@@ -69,9 +59,9 @@ router.post("/", rejectUnauthenticated, (req, res) => {
 // end POST /wants
 
 
-// DELETE /wants/userId/placeId
-router.delete("/:userId/:placeId", (req, res) => {
-  console.log("DELETE /wants/:userId/:placeId");
+// DELETE /wants
+router.delete("/", (req, res) => {
+  console.log("DELETE /wants");
   const user = req.user;
   const place=req.body;
   const queryText = 'DELETE FROM "list" WHERE (user_id=$1 AND list_id=$2)';
@@ -86,7 +76,7 @@ router.delete("/:userId/:placeId", (req, res) => {
       res.sendStatus(500);
     });
 });
-// end DELETE /wants/userId/placeId
+// end DELETE /wants
 
 
 module.exports = router;

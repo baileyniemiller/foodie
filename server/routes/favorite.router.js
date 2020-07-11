@@ -13,9 +13,6 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 // GET /favorites/id
 router.get("/:id", (req, res) => {
-  console.log("GET /favorites");
-  console.log('is authenticated? ', req.isAuthenticated());
-  console.log('user ', req.user);
   const userId = req.user.id;
   const queryText = `SELECT * FROM list WHERE (list_type=1 AND user_id=$1) ORDER BY name ASC`;
   const queryValue = [userId];
@@ -43,11 +40,6 @@ router.post("/", rejectUnauthenticated, (req, res) => {
   //   formatted_address: 1234 5th ave,
   //   rating: 5
   // }
-  // pull out req.body
-  console.log("POST /favorites");
-  console.log(req.body);
-  console.log('is authenticated? ', req.isAuthenticated());
-  console.log('user ', req.user);
   const newPlace = req.body;
   const user = req.user;
   //set up a query to the list table to insert the user id, list_type, place name, address, and rating
@@ -75,8 +67,6 @@ router.delete("/", (req, res) => {
   const place = req.body;
   const queryText = 'DELETE FROM "list" WHERE (user_id=$1 AND list_id=$2)';
   const queryValue = [user.id, place.list_id];
-  console.log(req.body)
-  console.log(queryValue);
   pool
     .query(queryText, queryValue)
     .then((result) => {

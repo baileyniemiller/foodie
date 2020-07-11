@@ -1,16 +1,6 @@
 import { put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
 
-// // will be fired on FETCH_FAVORITES
-// function* fetchFavorites(action) {
-//   try {
-// 		yield axios.get(`/favorites`, action.payload ); // took out action.payload for now....not sure if it'll work
-//     yield put({ type: "SET_FAVORITES", payload: action.payload });
-//   } catch (error) {
-//     console.log("Error getting favorites ", error);
-//   }
-// } // end GET
-
 
 // will be fired on ADD_FAVORITE
 function* addFavorite(action) {
@@ -41,7 +31,6 @@ function* deleteFavorite(action) {
 
 
 function* addFavoriteSaga() {
-  // yield takeLatest("FETCH_FAVORITES", fetchFavorites);
   yield takeLatest("ADD_FAVORITE", addFavorite);
   yield takeLatest("DELETE_FAVORITE", deleteFavorite);
 }
