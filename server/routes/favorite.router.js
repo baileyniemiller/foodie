@@ -68,15 +68,15 @@ router.post("/", rejectUnauthenticated, (req, res) => {
 // end POST /favorites
 
 
-// DELETE /favorites/userId/placeId
-router.delete("/", (req, res) => { //:userId/:placeId
+// DELETE /favorites
+router.delete("/", (req, res) => {
   console.log("DELETE /favorites");
-  // req.params.userId
-  // req.params.placeId
   const user = req.user;
-  const place=req.body;
+  const place = req.body;
   const queryText = 'DELETE FROM "list" WHERE (user_id=$1 AND list_id=$2)';
   const queryValue = [user.id, place.list_id];
+  console.log(req.body)
+  console.log(queryValue);
   pool
     .query(queryText, queryValue)
     .then((result) => {
@@ -88,7 +88,7 @@ router.delete("/", (req, res) => { //:userId/:placeId
       res.sendStatus(500);
     });
 });
-// end DELETE /favorites/userId/placeId
+// end DELETE /favorites
 
 
 module.exports = router;

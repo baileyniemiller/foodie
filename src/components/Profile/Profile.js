@@ -40,10 +40,10 @@ class SecretsPage extends Component {
     });
   };
 
-  handleDelete = (place) => {
-    this.props.dispatch({ type: "DELETE_FAVORITE", payload: place });
-    // window.location.reload(false);
-  }
+  // handleDelete = (place) => {
+  //   this.props.dispatch({ type: "DELETE_FAVORITE", payload: place });
+  //   // window.location.reload(false);
+  // }
 
   render() {
     return (
@@ -54,7 +54,7 @@ class SecretsPage extends Component {
           {this.state.favorites.map((place) => (
             <div>
               <li>{place.name}</li>
-              <HighlightOffIcon onClick={() => {this.handleDelete(place)}}/>
+              <HighlightOffIcon onClick={() => this.props.dispatch({ type: "DELETE_FAVORITE", payload: place })}/>
             </div>
           ))}
         </ul>

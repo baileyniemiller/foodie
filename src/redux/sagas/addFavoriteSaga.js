@@ -28,7 +28,8 @@ function* addFavorite(action) {
 // will be fired on DELETE_FAVORITE
 function* deleteFavorite(action) {
   try {
-    yield axios.delete(`/favorites`, action.payload);
+    yield axios.delete(`/favorites`, {data: action.payload});
+    console.log(action.payload);
     console.log('I think this is deleting?')
     // yield put({ type: "SET_FAVORITES", payload: action.payload });
   } catch (error) {
