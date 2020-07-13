@@ -8,95 +8,44 @@
   font-size: 45px;
 }
 
-/* Favorite column styles  */
-.favPaper {
+.profilePaper {
   height: 600px;
   width: 300px;
   overflow: scroll;
 }
 
-.favDiv {
-  border-bottom: 1px solid lightgray;
-  padding: 5px;
-  margin: 0px;
-}
-
-.favDiv:hover {
-  background-color: #fafafa;
-}
-
-.favTitle {
+.columnTitle {
   color: white;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 30px;
   font-weight: lighter;
-  background-color: #DB6464 ;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   margin-top: 0;
   text-align: center;
 }
-/* End Favorite column styles */
 
-/* Want column styles */
-.wantPaper {
-  height: 600px;
-  width: 300px;
-  overflow: scroll;
+#favTitle {
+  background-color: #DB6464;
 }
 
-.wantDiv {
+#wantTitle {
+  background-color: #1E8CB5;
+}
+
+#noTitle {
+  background-color: #EAB95D;
+}
+
+.rowDiv {
   border-bottom: 1px solid lightgray;
-  padding: 5px;
+  padding: 10px;
   margin: 0px;
 }
 
-.wantDiv:hover {
+.rowDiv:hover {
   background-color: #fafafa;
 }
-
-.wantTitle {
-  color: white;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 30px;
-  font-weight: lighter;
-  background-color: #1E8CB5 ;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 0;
-  text-align: center;
-}
-/* End Want column styles */
-
-/* No Go column styles */
-.noPaper {
-  height: 600px;
-  width: 300px;
-  overflow: scroll;
-}
-
-.noDiv {
-  border-bottom: 1px solid lightgray;
-  padding: 5px;
-  margin: 0px;
-}
-
-.noDiv:hover {
-  background-color: #fafafa;
-}
-
-.noTitle {
-  color: white;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 30px;
-  font-weight: lighter;
-  background-color: #EAB95D ;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-top: 0;
-  text-align: center;
-}
-/* End No Go column styles */
 
 /* List styles */
 ul {
@@ -108,5 +57,29 @@ ul {
 li {
   font-size: 20px;
   font-family: sans-serif;
+  display: inline;
+}
+
+.xIcon {
+  float: right;
+  display: inline;
+}
+
+.favX:hover, .wantX:hover, .noX:hover {
+  background-color: #E23D3D;
+  transition: 200ms;
+  border-radius: 50px;
 }
 /* End list styles */
+
+#yellowBlock {
+  background-color: #EAB95D;
+  height: 40px;
+  margin-bottom: 30px;
+  margin-top: -100px;
+}
+
+#lightBlueBlock {
+  background-color: #ADDCED;
+  height: 150px;
+}

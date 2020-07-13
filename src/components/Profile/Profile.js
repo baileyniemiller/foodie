@@ -1,15 +1,14 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import Nav from '../Nav/Nav';
-import axios from 'axios';
-import './Profile.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Nav from "../Nav/Nav";
+import axios from "axios";
+import "./Profile.css";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import swal from 'sweetalert';
-import ScrollArea from 'react-scrollbar';
-import { resetWarningCache } from 'prop-types';
-
+import swal from "sweetalert";
+import ScrollArea from "react-scrollbar";
+import { resetWarningCache } from "prop-types";
 
 // Profile page contains -->
 //  axios get requests for favorites, wants, and nogo lists
@@ -127,57 +126,74 @@ class ProfilePage extends Component {
           className="mainGrid"
         >
           <Grid item xs={9} sm={9} md={3} lg={3} xl={2}>
-            <Paper className="favPaper" elevation={3}>
-              <h2 className="favTitle">Favorites</h2>
+            <Paper className="profilePaper" elevation={3}>
+              <h2 id="favTitle" className="columnTitle">
+                Favorites
+              </h2>
               <ul>
                 {this.state.favorites.map((place) => (
-                  <div key={place.list_id} className="favDiv">
+                  <div key={place.list_id} className="rowDiv">
                     <li>{place.name}</li>
-                    <HighlightOffIcon
-                      onClick={() => {
-                        this.handleDeleteFav(place);
-                      }}
-                    />
+                    <li className="xIcon">
+                      <HighlightOffIcon
+                        className="favX"
+                        onClick={() => {
+                          this.handleDeleteFav(place);
+                        }}
+                      />
+                    </li>
                   </div>
                 ))}
               </ul>
             </Paper>
           </Grid>
           <Grid item xs={9} sm={9} md={3} lg={3} xl={2}>
-            <Paper className="wantPaper" elevation={3}>
-              <h2 className="wantTitle">Want-To-Go's</h2>
+            <Paper className="profilePaper" elevation={3}>
+              <h2 id="wantTitle" className="columnTitle">
+                Want-To-Go's
+              </h2>
               <ul>
                 {this.state.wants.map((place) => (
-                  <div key={place.list_id} className="wantDiv">
+                  <div key={place.list_id} className="rowDiv">
                     <li>{place.name}</li>
-                    <HighlightOffIcon
-                      onClick={() => {
-                        this.handleDeleteWant(place);
-                      }}
-                    />
+                    <li className="xIcon">
+                      <HighlightOffIcon
+                        className="wantX"
+                        onClick={() => {
+                          this.handleDeleteWant(place);
+                        }}
+                      />
+                    </li>
                   </div>
                 ))}
               </ul>
             </Paper>
           </Grid>
           <Grid item xs={9} sm={9} md={3} lg={3} xl={2}>
-            <Paper className="noPaper" elevation={3}>
-              <h2 className="noTitle">No-Go's</h2>
+            <Paper className="profilePaper" elevation={3}>
+              <h2 id="noTitle" className="columnTitle">
+                No-Go's
+              </h2>
               <ul>
                 {this.state.nogos.map((place) => (
-                  <div key={place.list_id} className="noDiv">
+                  <div key={place.list_id} className="rowDiv">
                     <li>{place.name}</li>
-                    <HighlightOffIcon
-                      onClick={() => {
-                        this.handleDeleteNogo(place);
-                      }}
-                    />
+                    <li className="xIcon">
+                      <HighlightOffIcon
+                        className="noX"
+                        onClick={() => {
+                          this.handleDeleteNogo(place);
+                        }}
+                      />
+                    </li>
                   </div>
                 ))}
               </ul>
             </Paper>
           </Grid>
         </Grid>
+        <div id="yellowBlock"></div>
+        <div id="lightBlueBlock"></div>
       </div>
     );
   }
@@ -185,7 +201,7 @@ class ProfilePage extends Component {
 
 // bringing in the user info to use as props
 // to welcome the user by their username
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   user: state.user,
 });
 
