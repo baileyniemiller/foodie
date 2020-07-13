@@ -3,21 +3,110 @@
   background-color: white;
 }
 
-.appTitle {
-  color: white;
+#welcome {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 45px;
 }
 
+/* Favorite column styles  */
 .favPaper {
-  height: 500px;
-  width: 250px;
+  height: 600px;
+  width: 300px;
+  overflow: scroll;
 }
 
+.favDiv {
+  border-bottom: 1px solid lightgray;
+  padding: 5px;
+  margin: 0px;
+}
+
+.favDiv:hover {
+  background-color: #fafafa;
+}
+
+.favTitle {
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 30px;
+  font-weight: lighter;
+  background-color: #DB6464 ;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 0;
+  text-align: center;
+}
+/* End Favorite column styles */
+
+/* Want column styles */
 .wantPaper {
-  height: 500px;
-  width: 250px;
+  height: 600px;
+  width: 300px;
+  overflow: scroll;
 }
 
-.noPaper {
-  height: 500px;
-  width: 250px;
+.wantDiv {
+  border-bottom: 1px solid lightgray;
+  padding: 5px;
+  margin: 0px;
 }
+
+.wantDiv:hover {
+  background-color: #fafafa;
+}
+
+.wantTitle {
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 30px;
+  font-weight: lighter;
+  background-color: #1E8CB5 ;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 0;
+  text-align: center;
+}
+/* End Want column styles */
+
+/* No Go column styles */
+.noPaper {
+  height: 600px;
+  width: 300px;
+  overflow: scroll;
+}
+
+.noDiv {
+  border-bottom: 1px solid lightgray;
+  padding: 5px;
+  margin: 0px;
+}
+
+.noDiv:hover {
+  background-color: #fafafa;
+}
+
+.noTitle {
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 30px;
+  font-weight: lighter;
+  background-color: #EAB95D ;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 0;
+  text-align: center;
+}
+/* End No Go column styles */
+
+/* List styles */
+ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+li {
+  font-size: 20px;
+  font-family: sans-serif;
+}
+/* End list styles */
