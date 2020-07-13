@@ -5,7 +5,20 @@
 
 #welcome {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 45px;
+  font-size: 40px;
+  padding: 0px;
+  margin-top: 30px;
+}
+
+.welcomeDiv {
+  text-align: center;
+  width: 400px;
+  padding: 0px;
+}
+
+.mainGrid {
+  vertical-align: center;
+  display: inline;
 }
 
 .profilePaper {

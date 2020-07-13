@@ -1,4 +1,7 @@
 footer {
-    margin-top: 80px;
+    padding: 20px;
+    font-size: 18px;
     color: black;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }

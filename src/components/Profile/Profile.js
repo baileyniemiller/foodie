@@ -116,16 +116,19 @@ class ProfilePage extends Component {
     return (
       <div className="profileBody">
         <Nav />
-        <h1 id="welcome">Hey, {this.props.user.username}!</h1>
+        <div className="welcomeDiv">
+          <h1 id="welcome">Hey, {this.props.user.username}!</h1>
+        </div>
         <Grid
           container
           direction="row"
           justify="flex-end"
           alginItems="center"
           spacing={1}
+          style={{ minHeight: "20vh" }}
           className="mainGrid"
         >
-          <Grid item xs={9} sm={9} md={3} lg={3} xl={2}>
+          <Grid item xs={12} sm={9} md={3} lg={3} xl={2} justify="center">
             <Paper className="profilePaper" elevation={3}>
               <h2 id="favTitle" className="columnTitle">
                 Favorites
@@ -137,6 +140,7 @@ class ProfilePage extends Component {
                     <li className="xIcon">
                       <HighlightOffIcon
                         className="favX"
+                        fontSize="small"
                         onClick={() => {
                           this.handleDeleteFav(place);
                         }}
@@ -147,7 +151,7 @@ class ProfilePage extends Component {
               </ul>
             </Paper>
           </Grid>
-          <Grid item xs={9} sm={9} md={3} lg={3} xl={2}>
+          <Grid item xs={12} sm={9} md={3} lg={3} xl={2} justify="center">
             <Paper className="profilePaper" elevation={3}>
               <h2 id="wantTitle" className="columnTitle">
                 Want-To-Go's
@@ -159,6 +163,7 @@ class ProfilePage extends Component {
                     <li className="xIcon">
                       <HighlightOffIcon
                         className="wantX"
+                        fontSize="small"
                         onClick={() => {
                           this.handleDeleteWant(place);
                         }}
@@ -169,7 +174,7 @@ class ProfilePage extends Component {
               </ul>
             </Paper>
           </Grid>
-          <Grid item xs={9} sm={9} md={3} lg={3} xl={2}>
+          <Grid item xs={12} sm={9} md={3} lg={3} xl={2} justify="center">
             <Paper className="profilePaper" elevation={3}>
               <h2 id="noTitle" className="columnTitle">
                 No-Go's
@@ -181,6 +186,7 @@ class ProfilePage extends Component {
                     <li className="xIcon">
                       <HighlightOffIcon
                         className="noX"
+                        fontSize="small"
                         onClick={() => {
                           this.handleDeleteNogo(place);
                         }}
