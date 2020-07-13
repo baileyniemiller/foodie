@@ -2,3 +2,22 @@
   margin: 0;
   background-color: white;
 }
+
+.appTitle {
+  color: white;
+}
+
+.favPaper {
+  height: 500px;
+  width: 250px;
+}
+
+.wantPaper {
+  height: 500px;
+  width: 250px;
+}
+
+.noPaper {
+  height: 500px;
+  width: 250px;
+}

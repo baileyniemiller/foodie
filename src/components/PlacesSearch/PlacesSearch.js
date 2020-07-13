@@ -59,7 +59,7 @@ class UserPage extends Component {
             />
             <button onClick={this.handlePlaces}>GO</button>
           </header>
-          <h1 className="appTitle">Search Results</h1>
+          <h2 className="appTitle">Search Results</h2>
           <br />
           {this.state.restaurant.map((place) => (
             <div>
@@ -67,7 +67,7 @@ class UserPage extends Component {
               <h2 id="placeAddress">{place.formatted_address}</h2>
               <h3 id="placeRating">Rating: {place.rating}</h3>
               <FavoriteRoundedIcon color="secondary" onClick={() => {this.props.dispatch({ type: "ADD_FAVORITE", payload: place })}}/> 
-              <StarRoundedIcon className="star" onClick={() => {this.props.dispatch({ type: "ADD_WANT", payload: place })}}/> 
+              <StarRoundedIcon className="star" color="primary" onClick={() => {this.props.dispatch({ type: "ADD_WANT", payload: place })}}/> 
               <NotInterestedRoundedIcon color="error" onClick={() => {this.props.dispatch({ type: "ADD_NOGO", payload: place })}}/>
             </div>
           ))}
