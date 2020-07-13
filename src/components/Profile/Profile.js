@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import swal from 'sweetalert';
 import ScrollArea from 'react-scrollbar';
+import { resetWarningCache } from 'prop-types';
 
 
 // Profile page contains -->
@@ -16,13 +17,12 @@ import ScrollArea from 'react-scrollbar';
 //  display of the data in each list for the user
 //  the delete handler and dispatches
 class ProfilePage extends Component {
-
   // setting state for each "list" to be an empty array
   state = {
     favorites: [],
     wants: [],
     nogos: [],
-  }
+  };
 
   // when the component mounts, GET requests will be sent to grab
   // all of the favorites, wants and nogos.
@@ -45,26 +45,71 @@ class ProfilePage extends Component {
         nogos: nogoData, //new nogos array
       });
     });
-  };
+  }
 
-  // on the click of the delete button, the delete function will run,
-  // dispatching to the corresponding type, with a payload of
+  // on the click of the delete button, the delete function will run.
+  // an alert will pop up for the user to confirm or cancel
+  // if they choose to cancel, nothing will happen!
+  // if they choose to delete, then the dispatch will be sent
+  // to the corresponding type, with a payload of
   // the place that was clicked.  Then the page refreshes
   // to get the new lists
   handleDeleteFav = (place) => {
-    this.props.dispatch({ type: "DELETE_FAVORITE", payload: place });
-    window.location.reload(false);
-  }
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you won't have this restaurant saved anymore.",
+      icon: "warning",
+      buttons: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal("Restaurant deleted!", {
+          icon: "success",
+        });
+        this.props.dispatch({ type: "DELETE_FAVORITE", payload: place });
+        window.location.reload(false);
+      } else {
+        swal("Your restaurant is saved!");
+      }
+    });
+  };
 
   handleDeleteWant = (place) => {
-    this.props.dispatch({ type: "DELETE_WANT", payload: place });
-    window.location.reload(false);
-  }
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you won't have this restaurant saved anymore.",
+      icon: "warning",
+      buttons: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal("Restaurant deleted!", {
+          icon: "success",
+        });
+        this.props.dispatch({ type: "DELETE_WANT", payload: place });
+        window.location.reload(false);
+      } else {
+        swal("Your restaurant is saved!");
+      }
+    });
+  };
 
   handleDeleteNogo = (place) => {
-    this.props.dispatch({ type: "DELETE_NOGO", payload: place });
-    window.location.reload(false);
-  }
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you won't have this restaurant saved anymore.",
+      icon: "warning",
+      buttons: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal("Restaurant deleted!", {
+          icon: "success",
+        });
+        this.props.dispatch({ type: "DELETE_NOGO", payload: place });
+        window.location.reload(false);
+      } else {
+        swal("Your restaurant is saved!");
+      }
+    });
+  };
 
   // in the render function, each list (from state) is mapped
   // through in order to display each item on the user's profile
@@ -73,41 +118,60 @@ class ProfilePage extends Component {
       <div className="profileBody">
         <Nav />
         <h1 id="welcome">Hey, {this.props.user.username}!</h1>
-        <Grid container direction="row" justify="flex-end" alginItems="center" spacing={1} className="mainGrid">
+        <Grid
+          container
+          direction="row"
+          justify="flex-end"
+          alginItems="center"
+          spacing={1}
+          className="mainGrid"
+        >
           <Grid item xs={9} sm={9} md={3} lg={3} xl={2}>
-              <Paper className="favPaper" elevation={3}>
-                <h2 className="favTitle">Favorites</h2>
-                <ul>
-                  {this.state.favorites.map((place) => (
-                    <div key={place.list_id} className="favDiv">
-                      <li>{place.name}</li>
-                      <HighlightOffIcon onClick={() => {this.handleDeleteFav(place)}}/>
-                    </div>
-                  ))}
-                </ul>
-              </Paper>
+            <Paper className="favPaper" elevation={3}>
+              <h2 className="favTitle">Favorites</h2>
+              <ul>
+                {this.state.favorites.map((place) => (
+                  <div key={place.list_id} className="favDiv">
+                    <li>{place.name}</li>
+                    <HighlightOffIcon
+                      onClick={() => {
+                        this.handleDeleteFav(place);
+                      }}
+                    />
+                  </div>
+                ))}
+              </ul>
+            </Paper>
           </Grid>
-            <Grid item xs={9} sm={9} md={3} lg={3} xl={2}>
-              <Paper className="wantPaper" elevation={3}>
-                <h2 className="wantTitle">Want-To-Go's</h2>
-                  <ul>
-                    {this.state.wants.map((place) => (
-                      <div key={place.list_id} className="wantDiv">
-                        <li>{place.name}</li>
-                        <HighlightOffIcon onClick={() => {this.handleDeleteWant(place)}}/>
-                      </div>
-                    ))}
-                  </ul>
-                </Paper>
-            </Grid>
           <Grid item xs={9} sm={9} md={3} lg={3} xl={2}>
-            <Paper className="noPaper" elevation={3}>       
+            <Paper className="wantPaper" elevation={3}>
+              <h2 className="wantTitle">Want-To-Go's</h2>
+              <ul>
+                {this.state.wants.map((place) => (
+                  <div key={place.list_id} className="wantDiv">
+                    <li>{place.name}</li>
+                    <HighlightOffIcon
+                      onClick={() => {
+                        this.handleDeleteWant(place);
+                      }}
+                    />
+                  </div>
+                ))}
+              </ul>
+            </Paper>
+          </Grid>
+          <Grid item xs={9} sm={9} md={3} lg={3} xl={2}>
+            <Paper className="noPaper" elevation={3}>
               <h2 className="noTitle">No-Go's</h2>
               <ul>
                 {this.state.nogos.map((place) => (
                   <div key={place.list_id} className="noDiv">
                     <li>{place.name}</li>
-                    <HighlightOffIcon onClick={() => {this.handleDeleteNogo(place)}}/>
+                    <HighlightOffIcon
+                      onClick={() => {
+                        this.handleDeleteNogo(place);
+                      }}
+                    />
                   </div>
                 ))}
               </ul>
