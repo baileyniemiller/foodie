@@ -7,18 +7,14 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 40px;
   padding: 0px;
-  margin-top: 30px;
+  margin-top: 75px;
 }
 
-.welcomeDiv {
+.welcomeSection {
   text-align: center;
   width: 400px;
   padding: 0px;
-}
-
-.mainGrid {
-  vertical-align: center;
-  display: inline;
+  display: inline-block;
 }
 
 .profilePaper {

@@ -24,8 +24,20 @@ function* fetchUser() {
   }
 }
 
+function* editUsername(action) {
+  console.log(action.payload)
+  try {
+    const response = yield axios.put(`/api/user/${action.payload.userId}`, action.payload);
+    yield put({ type: "SET_USER", payload: response.data });
+    console.log("Success in updating username.");
+  } catch (error) {
+    console.log("error editing username", error);
+  }
+}
+
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
+  yield takeLatest('EDIT_USER', editUsername);
 }
 
 export default userSaga;

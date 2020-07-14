@@ -41,4 +41,26 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+// PUT /api/user/id
+router.put(`/:id`, (req, res) => {
+  const newName = req.body.username;
+  const userId = req.params.id
+  // setting query text to update the username
+  const queryText = `UPDATE "user" SET username=$1 WHERE id=$2`;
+  const queryValue = [newName, userId];
+  console.log('New username is: ', newName);
+  console.log('User id is: ', userId);
+  pool
+    .query(queryText, queryValue)
+    .then((result) => {
+      console.log("Success in updating username!");
+      res.send(result.rows); 
+    })
+    .catch((error) => {
+      console.log(`Error on PUT with query ${error}`);
+      res.sendStatus(500); // if there is an error, send server error 500
+    });
+});
+// end PUT /user/api/id
+
 module.exports = router;
