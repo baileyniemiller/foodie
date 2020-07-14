@@ -112,8 +112,21 @@ class ProfilePage extends Component {
   };
 
   editUsername = () => {
-    console.log("Dispatching to EDIT_USER with payload of: ", this.state.username);
-    this.props.dispatch({type: "EDIT_USER", payload: {username: this.state.username, userId: this.props.user.id }});
+    swal({
+      title: "Are you sure?",
+      text: "Once your username is changed, you'll need to log back in :)",
+      icon: "warning",
+      buttons: true,
+    }).then((willUpdate) => {
+      if (willUpdate) {
+        swal(`Username updated to ${this.state.username}! Please login again.`, {
+          icon: "success",
+        });
+        this.props.dispatch({type: "EDIT_USER", payload: {username: this.state.username, userId: this.props.user.id }});
+      } else {
+        swal(`Your username will continue to be ${this.props.user.username}!`);
+      }
+    });
   }
 
   // in the render function, each list (from state) is mapped
