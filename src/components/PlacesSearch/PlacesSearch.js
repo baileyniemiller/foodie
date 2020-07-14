@@ -73,9 +73,11 @@ class UserPage extends Component {
                 <h1 id="placeName">{place.name}</h1>
                 <h2 id="placeAddress">{place.formatted_address}</h2>
                 <h3 id="placeRating">Rating: {place.rating}</h3>
+                <div id="iconDiv">
                 <Tooltip title="Add to Favorites"><FavoriteRoundedIcon id="favIcon" color="secondary" onClick={() => {this.props.dispatch({ type: "ADD_FAVORITE", payload: place })}}/></Tooltip>
                 <Tooltip title="Add to Want-to-Go"><StarRoundedIcon id="starIcon" color="primary" onClick={() => {this.props.dispatch({ type: "ADD_WANT", payload: place })}}/></Tooltip>
                 <Tooltip title="Add to No-Go"><SentimentVeryDissatisfiedIcon id="sadIcon" color="error" onClick={() => {this.props.dispatch({ type: "ADD_NOGO", payload: place })}}/></Tooltip>
+                </div>
               </div>
             ))}
           </div>

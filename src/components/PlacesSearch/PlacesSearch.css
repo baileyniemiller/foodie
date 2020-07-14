@@ -62,20 +62,31 @@
 #resultDiv {
   margin-right: 15px;
   margin-left: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid lightgray;
 }
 
 #placeName {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: #EAB95D;
   font-size: 30px;
+  margin-bottom: -12px;
 }
 
 #placeAddress {
   font-family: sans-serif;
   font-weight: lighter;
   font-size: 24px;
-  margin: 0px;
+  margin-bottom: -8px;
   padding: 0px;
+}
+
+#iconDiv {
+  margin-bottom: 15px;
+}
+
+#placeRating {
+  font-family: sans-serif;
 }
 /* End Results */
 
