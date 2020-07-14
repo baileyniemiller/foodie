@@ -15,6 +15,7 @@
   width: 400px;
   padding: 0px;
   display: inline-block;
+  box-sizing: border-box;
 }
 
 .profilePaper {
@@ -75,8 +76,26 @@
   border-radius: 5px;
   border: 1px solid #1E8CB5;
   padding: 5px;
+  margin: 3px;
   background-color: white;
   color: #1E8CB5;
+}
+
+.usernameCancelButton {
+  font-size: 15px;
+  font-family: sans-serif;
+  border-radius: 5px;
+  border: 1px solid #DB6464;
+  padding: 5px;
+  margin: 3px;
+  background-color: white;
+  color: #DB6464;
+}
+
+.usernameCancelButton:hover {
+  background-color: #DB6464;
+  color: white;
+  transition: 200ms;
 }
 
 .usernameButton:hover {
@@ -84,6 +103,7 @@
   color: white;
   transition: 200ms;
 }
+/* End update username form */
 
 /* List styles */
 ul {

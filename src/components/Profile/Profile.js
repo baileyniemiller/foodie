@@ -166,7 +166,7 @@ class ProfilePage extends Component {
               <button onClick={this.editUsername} className="usernameButton">
                 Update
               </button>
-              <button onClick={() => this.setState({ showInput: false, username: '' })} className="usernameButton">
+              <button onClick={() => this.setState({ showInput: false, username: '' })} className="usernameCancelButton">
                 Cancel
               </button>
             </>
