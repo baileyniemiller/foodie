@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import LogOutButton from "../LogOutButton/LogOutButton";
 import axios from "axios";
 import NotInterestedRoundedIcon from "@material-ui/icons/NotInterestedRounded";
 import StarRoundedIcon from "@material-ui/icons/StarRounded";
 import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
+import SentimentVeryDissatisfiedIcon from "@material-ui/icons/SentimentVeryDissatisfied";
 import HomeNav from '../HomeNav/HomeNav';
+import Paper from "@material-ui/core/Paper";
+import swal from "sweetalert";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
+import Tooltip from "@material-ui/core/Tooltip";
 import './PlacesSearch.css';
 
 // Places search page contains --> 
@@ -44,34 +49,47 @@ class UserPage extends Component {
     return (
       <div className="homeBody">
         <HomeNav />
-        <div>
-          {/* <LogOutButton className="log-in" /> */}
-        </div>
-        <div className="app">
-          <header className="appHeader">
-            <input
-              type="text"
-              value={this.state.searchText}
-              placeholder="Search"
-              onChange={(event) => {
-                this.setState({ searchText: event.target.value });
-              }}
-            />
-            <button onClick={this.handlePlaces}>GO</button>
-          </header>
-          <h2 className="appTitle">Search Results</h2>
-          <br />
-          {this.state.restaurant.map((place) => (
-            <div>
-              <h1 id="placeName">{place.name}</h1>
-              <h2 id="placeAddress">{place.formatted_address}</h2>
-              <h3 id="placeRating">Rating: {place.rating}</h3>
-              <FavoriteRoundedIcon color="secondary" onClick={() => {this.props.dispatch({ type: "ADD_FAVORITE", payload: place })}}/> 
-              <StarRoundedIcon className="star" color="primary" onClick={() => {this.props.dispatch({ type: "ADD_WANT", payload: place })}}/> 
-              <NotInterestedRoundedIcon color="error" onClick={() => {this.props.dispatch({ type: "ADD_NOGO", payload: place })}}/>
-            </div>
-          ))}
-        </div>
+        <Container maxWidth="lg" className="placesSearchContainer">
+          <Grid container direction="row">
+            <Grid item xs={12} sm={6}>
+          <Paper className="searchPaper" elevation={3}>
+          <div className="searchDiv">
+            <header className="appHeader">
+              <input
+                type="text"
+                value={this.state.searchText}
+                placeholder="Search"
+                id="searchInput"
+                onChange={(event) => {
+                  this.setState({ searchText: event.target.value });
+                }}
+              />
+              <button onClick={this.handlePlaces} id="goButton">GO</button>
+            </header>
+            <h2 className="appTitle">Search Results</h2>
+            <br />
+            {this.state.restaurant.map((place) => (
+              <div id="resultDiv">
+                <h1 id="placeName">{place.name}</h1>
+                <h2 id="placeAddress">{place.formatted_address}</h2>
+                <h3 id="placeRating">Rating: {place.rating}</h3>
+                <Tooltip title="Add to Favorites"><FavoriteRoundedIcon id="favIcon" color="secondary" onClick={() => {this.props.dispatch({ type: "ADD_FAVORITE", payload: place })}}/></Tooltip>
+                <Tooltip title="Add to Want-to-Go"><StarRoundedIcon id="starIcon" color="primary" onClick={() => {this.props.dispatch({ type: "ADD_WANT", payload: place })}}/></Tooltip>
+                <Tooltip title="Add to No-Go"><SentimentVeryDissatisfiedIcon id="sadIcon" color="error" onClick={() => {this.props.dispatch({ type: "ADD_NOGO", payload: place })}}/></Tooltip>
+              </div>
+            ))}
+          </div>
+          </Paper>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+          <div className="instructionsDiv">
+            {/* <img src="arrow.png"/> */}
+            <h1 id="instructionsh1">Start by searching "restaurants" or "Chinese food"</h1>
+            <h2 id="instructionsh2">Save them to your lists!</h2>
+          </div>
+          </Grid>
+          </Grid>
+        </Container>
       </div>
     );
   }

@@ -1,12 +1,13 @@
 .nav-title {
-    font-size: 45px;
-    display: inline-block;
-    color: #E23D3D;
-    font-family: 'Pacifico', cursive;
-    padding-left: 10px;
+  font-size: 50px;
+  display: inline-block;
+  color: #E23D3D;
+  font-family: 'Pacifico', cursive;
+  padding-left: 75px;
+  margin: 0px;
 }
 
-.nav {
+.homeNav {
   overflow: hidden;
 }
 
@@ -43,4 +44,5 @@
 
 .nav-right {
   float: right;
+  padding-right: 75px;
 }
