@@ -56,6 +56,35 @@
   background-color: #fafafa;
 }
 
+/* Update username form */
+#usernameInput {
+  font-size: 15px;
+  font-family: sans-serif;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  padding: 3px;
+}
+
+#usernameInput:hover {
+  border: 1px solid #ADDCED;
+}
+
+.usernameButton {
+  font-size: 15px;
+  font-family: sans-serif;
+  border-radius: 5px;
+  border: 1px solid #1E8CB5;
+  padding: 5px;
+  background-color: white;
+  color: #1E8CB5;
+}
+
+.usernameButton:hover {
+  background-color: #1E8CB5;
+  color: white;
+  transition: 200ms;
+}
+
 /* List styles */
 ul {
   list-style: none;

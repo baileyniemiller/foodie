@@ -7,8 +7,7 @@ import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import swal from "sweetalert";
-import ScrollArea from "react-scrollbar";
-import { resetWarningCache } from "prop-types";
+import TextField from "@material-ui/core/TextField";
 
 // Profile page contains -->
 //  axios get requests for favorites, wants, and nogo lists
@@ -21,7 +20,8 @@ class ProfilePage extends Component {
     favorites: [],
     wants: [],
     nogos: [],
-    username: '',
+    username: "",
+    showInput: false,
   };
 
   // when the component mounts, GET requests will be sent to grab
@@ -119,15 +119,24 @@ class ProfilePage extends Component {
       buttons: true,
     }).then((willUpdate) => {
       if (willUpdate) {
-        swal(`Username updated to ${this.state.username}! Please login again.`, {
-          icon: "success",
+        swal(
+          `Username updated to ${this.state.username}! Please login again.`,
+          { icon: "success" }
+        );
+        this.props.dispatch({
+          type: "EDIT_USER",
+          payload: {
+            username: this.state.username,
+            userId: this.props.user.id,
+          },
         });
-        this.props.dispatch({type: "EDIT_USER", payload: {username: this.state.username, userId: this.props.user.id }});
+        this.setState({ showInput: false, username: '' });
       } else {
         swal(`Your username will continue to be ${this.props.user.username}!`);
+        this.setState({ username: '' });
       }
     });
-  }
+  };
 
   // in the render function, each list (from state) is mapped
   // through in order to display each item on the user's profile
@@ -137,15 +146,37 @@ class ProfilePage extends Component {
         <Nav />
         <container className="welcomeSection">
           <h1 id="welcome">Hey, {this.props.user.username}!</h1>
-            <input
-              type="text"
-              value={this.state.username}
-              placeholder="Update Username"
-              onChange={(event) => {
-                this.setState({ username: event.target.value });
-              }}
-            />
-            <button onClick={this.editUsername}>Update Username</button>
+          {/* Conditional rendering here: if showInput is true, then we will
+              show the input and the update button!  If not, then we will
+              show the Update Username button ONLY.  On click of the
+              Update Username button will set showInput to true.
+              If they choose to follow through with the update, then
+              it will set showInput back to false. */}
+          {this.state.showInput ? (
+            <>
+              <input
+                type="text"
+                value={this.state.username}
+                placeholder="Update Username"
+                id="usernameInput"
+                onChange={(event) => {
+                  this.setState({ username: event.target.value });
+                }}
+              />
+              <button onClick={this.editUsername} className="usernameButton">
+                Update
+              </button>
+              <button onClick={() => this.setState({ showInput: false, username: '' })} className="usernameButton">
+                Cancel
+              </button>
+            </>
+          ) : (
+            <>
+              <button onClick={() => this.setState({ showInput: true })} className="usernameButton">
+                Update Username
+              </button>
+            </>
+          )}
         </container>
         <container className="gridSection">
           <Grid
