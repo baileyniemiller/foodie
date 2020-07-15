@@ -41,7 +41,7 @@
 }
 
 .nav-link:hover {
-  color: #fafafa;
+  border-bottom: 1px solid #EAB95D;
 }
 
 .nav-right {

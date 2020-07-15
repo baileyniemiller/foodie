@@ -36,14 +36,14 @@ class LoginPage extends Component {
         <div>
           <Nav />
         </div>
-        {this.props.errors.loginMessage && (
+        {/* {this.props.errors.loginMessage && (
           <h2
             className="alert"
             role="alert"
           >
             {this.props.errors.loginMessage}
           </h2>
-        )}
+        )} */}
         <form onSubmit={this.login}>
           <h1>Login</h1>
           <div>
@@ -53,7 +53,7 @@ class LoginPage extends Component {
                 type="text"
                 name="username"
                 value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
+                onChange={this.handleInputChangeFor("username")}
               />
             </label>
           </div>
@@ -64,7 +64,7 @@ class LoginPage extends Component {
                 type="password"
                 name="password"
                 value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
+                onChange={this.handleInputChangeFor("password")}
               />
             </label>
           </div>
@@ -75,17 +75,28 @@ class LoginPage extends Component {
               name="submit"
               value="Log In"
             />
+            {this.props.errors.loginMessage && (
+              <h2 className="alert" role="alert">
+                {this.props.errors.loginMessage}
+              </h2>
+            )}
           </div>
         </form>
         <center>
-          Don't have an account? <button
+          Don't have an account?{" "}
+          <button
             type="button"
             className="link-button"
-            onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
+            onClick={() => {
+              this.props.dispatch({ type: "SET_TO_REGISTER_MODE" });
+            }}
           >
             Create Account
           </button>
         </center>
+        <div id="yellowBlockLogin"></div>
+        <div id="lightRedBlockLogin"></div>
+        <div id="lightBlueBlockLogin"></div>
       </div>
     );
   }

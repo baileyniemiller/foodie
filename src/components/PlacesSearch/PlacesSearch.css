@@ -30,6 +30,11 @@
   box-sizing: border-box;
 }
 
+#searchLabel {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 18px;
+}
+
 #goButton {
   background-color: #E23D3D;
   border-radius: 75%;
@@ -38,6 +43,7 @@
   border: 1px solid #E23D3D;
   font-family: sans-serif;
   font-weight: bold;
+  transition: 200ms;
 }
 
 #goButton:hover {
@@ -92,19 +98,20 @@
 
 /* Instructions section */
 .instructionsDiv {
-  margin-top: 250px;
+  margin-top: 240px;
   margin-left: 20px;
 }
 
 #instructionsh1 {
   font-family: sans-serif;
   font-weight: lighter;
-  font-size: 35px;
+  font-size: 40px;
   color: #E23D3D;
+  margin-bottom: -10px;
 }
 
 #instructionsh2 {
-  font-family: sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: white;
 }
 /* End instructions section */

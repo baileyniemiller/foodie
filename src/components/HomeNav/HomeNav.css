@@ -40,10 +40,10 @@
 }
 
 .nav-link:hover {
-  color: lightgray;
+  border-bottom: 1px solid #EAB95D;
 }
 
 .nav-right {
   float: right;
-  padding-right: 75px;
+  padding-right: 0px;
 }

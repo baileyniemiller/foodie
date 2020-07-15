@@ -44,18 +44,7 @@ class RegisterPage extends Component {
           </h2>
         )}
         <form onSubmit={this.registerUser}>
-          <h1>Register User</h1>
-          <div>
-            <label htmlFor="firstName">
-              First Name:
-              <input
-                type="text"
-                name="firstName"
-                value={this.state.firstName}
-                onChange={this.handleInputChangeFor("firstName")}
-              />
-            </label>
-          </div>
+          <h1>Become A Foodie!</h1>
           <div>
             <label htmlFor="username">
               Username:
@@ -83,7 +72,7 @@ class RegisterPage extends Component {
               className="register"
               type="submit"
               name="submit"
-              value="Register"
+              value="Create Account"
             />
           </div>
         </form>
@@ -99,6 +88,9 @@ class RegisterPage extends Component {
             Login
           </button>
         </center>
+        <div id="yellowBlockLogin"></div>
+        <div id="lightRedBlockLogin"></div>
+        <div id="lightBlueBlockLogin"></div>
       </div>
     );
   }

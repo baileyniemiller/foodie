@@ -22,7 +22,7 @@ const HomeNav = (props) => (
           <Link className="nav-link" to="/profile">
             My Profile
           </Link>
-          <LogOutButton id="logout"/>
+          <LogOutButton id="logout" className="nav-link"/>
         </>
       )}
       {/* Always show this link since the about page is not protected */}
