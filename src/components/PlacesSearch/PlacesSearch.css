@@ -74,7 +74,8 @@
 
 #placeName {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: #EAB95D;
+  /* color: #EAB95D; */
+  color: black;
   font-size: 30px;
   margin-bottom: -12px;
 }
@@ -105,13 +106,14 @@
 #instructionsh1 {
   font-family: sans-serif;
   font-weight: lighter;
-  font-size: 40px;
-  color: #E23D3D;
+  font-size: 45px;
+  color: #EAB95D;
   margin-bottom: -10px;
 }
 
 #instructionsh2 {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 27px;
   color: white;
 }
 /* End instructions section */

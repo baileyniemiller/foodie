@@ -21,6 +21,7 @@
 .profilePaper {
   height: 600px;
   width: 300px;
+  margin-top: 75px;
   overflow: scroll;
 }
 
@@ -79,6 +80,7 @@
   margin: 3px;
   background-color: white;
   color: #1E8CB5;
+  transition: 200ms;
 }
 
 .usernameCancelButton {
@@ -90,6 +92,7 @@
   margin: 3px;
   background-color: white;
   color: #DB6464;
+  transition: 200ms;
 }
 
 .usernameCancelButton:hover {
@@ -133,11 +136,11 @@ li {
 #yellowBlock {
   background-color: #EAB95D;
   height: 40px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   margin-top: -100px;
 }
 
 #lightBlueBlock {
   background-color: #ADDCED;
-  height: 150px;
+  height: 100px;
 }

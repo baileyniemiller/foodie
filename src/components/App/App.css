@@ -1,13 +1,13 @@
 body {
     margin: 0px;
-    font-family: sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .alert {
-    background-color: #E23D3D;
+    /* background-color: #E23D3D; */
     border-radius: 5px;
     padding: 10px;
-    color: white;
+    color: #E23D3D;
     font-size: 15px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: lighter;
@@ -19,11 +19,15 @@ form {
     border: 1px solid #E23D3D;
     box-shadow: 5px 5px 10px lightgray;
     width: 25%;
-    height: 275px;
+    height: 280px;
     margin: 40px auto;
     padding: 25px;
     border-radius: 5px;
     text-align: center;
+}
+
+#becomeAFoodie, #login {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 input {
@@ -51,7 +55,7 @@ label {
   margin-top: 20px;
   outline:0;
   cursor: pointer;
-  font-family: sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   transition: 200ms;
 }
 
@@ -80,7 +84,7 @@ label {
 }
 
 #lightRedBlockLogin {
-  background-color: #E23D3D;
+  background-color: #DB6464;
   height: 100px;
   margin-bottom: 10px;
 }

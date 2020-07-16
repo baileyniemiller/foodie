@@ -5,9 +5,9 @@ import axios from "axios";
 import "./Profile.css";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
 import swal from "sweetalert";
-import TextField from "@material-ui/core/TextField";
 
 // Profile page contains -->
 //  axios get requests for favorites, wants, and nogo lists
@@ -73,6 +73,7 @@ class ProfilePage extends Component {
     });
   };
 
+  // dispatches to DELETE_WANT on confirmation
   handleDeleteWant = (place) => {
     swal({
       title: "Are you sure?",
@@ -92,6 +93,7 @@ class ProfilePage extends Component {
     });
   };
 
+  // dispatches on DELETE_NOGO on confirmation
   handleDeleteNogo = (place) => {
     swal({
       title: "Are you sure?",
@@ -111,6 +113,12 @@ class ProfilePage extends Component {
     });
   };
 
+  // if a user chooses to edit their username, this function will run
+  // an alert will pop up to have them confirm or cancel the change
+  // if it's canceled, nothing happens and the input is set back to
+  // an empty string.
+  // if they choose to confirm, EDIT_USER will be dispatched and the
+  // username will be updated in the database
   editUsername = () => {
     swal({
       title: "Are you sure?",
@@ -130,10 +138,10 @@ class ProfilePage extends Component {
             userId: this.props.user.id,
           },
         });
-        this.setState({ showInput: false, username: '' });
+        this.setState({ showInput: false, username: "" });
       } else {
         swal(`Your username will continue to be ${this.props.user.username}!`);
-        this.setState({ username: '' });
+        this.setState({ username: "" });
       }
     });
   };
@@ -144,50 +152,61 @@ class ProfilePage extends Component {
     return (
       <div className="profileBody">
         <Nav />
-        <container className="welcomeSection">
-          <h1 id="welcome">Hey, {this.props.user.username}!</h1>
-          {/* Conditional rendering here: if showInput is true, then we will
-              show the input and the update button!  If not, then we will
-              show the Update Username button ONLY.  On click of the
-              Update Username button will set showInput to true.
-              If they choose to follow through with the update, then
-              it will set showInput back to false. */}
-          {this.state.showInput ? (
-            <>
-              <input
-                type="text"
-                value={this.state.username}
-                placeholder="Update Username"
-                id="usernameInput"
-                onChange={(event) => {
-                  this.setState({ username: event.target.value });
-                }}
-              />
-              <button onClick={this.editUsername} className="usernameButton">
-                Update
-              </button>
-              <button onClick={() => this.setState({ showInput: false, username: '' })} className="usernameCancelButton">
-                Cancel
-              </button>
-            </>
-          ) : (
-            <>
-              <button onClick={() => this.setState({ showInput: true })} className="usernameButton">
-                Update Username
-              </button>
-            </>
-          )}
-        </container>
-        <container className="gridSection">
+        <Container maxWidth="xl" className="profileContainer">
           <Grid
             container
             direction="row"
-            justify="flex-end"
+            justify="center"
             alginItems="center"
             spacing={1}
             style={{ minHeight: "20vh" }}
             className="mainGrid"
           >
+            <Grid item className="welcomeSection">
+              <h1 id="welcome">Hey, {this.props.user.username}!</h1>
+              {/* Conditional rendering here: if showInput is true, then we will
+              show the input and the update button!  If not, then we will
+              show the Update Username button ONLY.  On click of the
+              Update Username button will set showInput to true.
+              If they choose to follow through with the update, then
+              it will set showInput back to false. */}
+              {this.state.showInput ? (
+                <>
+                  <input
+                    type="text"
+                    value={this.state.username}
+                    placeholder="Update Username"
+                    id="usernameInput"
+                    onChange={(event) => {
+                      this.setState({ username: event.target.value });
+                    }}
+                  />
+                  <button
+                    onClick={this.editUsername}
+                    className="usernameButton"
+                  >
+                    Update
+                  </button>
+                  <button
+                    onClick={() =>
+                      this.setState({ showInput: false, username: "" })
+                    }
+                    className="usernameCancelButton"
+                  >
+                    Cancel
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => this.setState({ showInput: true })}
+                    className="usernameButton"
+                  >
+                    Update Username
+                  </button>
+                </>
+              )}
+            </Grid>
             <Grid item xs={12} sm={9} md={3} lg={3} xl={2} justify="center">
               <Paper className="profilePaper" elevation={3}>
                 <h2 id="favTitle" className="columnTitle">
@@ -258,7 +277,8 @@ class ProfilePage extends Component {
               </Paper>
             </Grid>
           </Grid>
-        </container>
+          {/* </container> */}
+        </Container>
         <div id="yellowBlock"></div>
         <div id="lightBlueBlock"></div>
       </div>

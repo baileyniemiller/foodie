@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import NotInterestedRoundedIcon from "@material-ui/icons/NotInterestedRounded";
+import ThumbDownAltIcon from "@material-ui/icons/ThumbDownAlt";
 import StarRoundedIcon from "@material-ui/icons/StarRounded";
 import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
-import SentimentVeryDissatisfiedIcon from "@material-ui/icons/SentimentVeryDissatisfied";
 import HomeNav from "../HomeNav/HomeNav";
 import Paper from "@material-ui/core/Paper";
 import swal from "sweetalert";
@@ -27,6 +26,9 @@ class UserPage extends Component {
   state = {
     searchText: "",
     restaurant: [],
+    showFav: false,
+    showWant: false,
+    showNo: false,
   };
 
   // on the click of the GO button, this function will run and grab the results
@@ -50,6 +52,14 @@ class UserPage extends Component {
         <HomeNav />
         <Container maxWidth="lg" className="placesSearchContainer">
           <Grid container direction="row">
+            <Grid item xs={12} sm={6} md={6}>
+              <div className="instructionsDiv">
+                <h1 id="instructionsh1">
+                  Start by searching "restaurants" or "Chinese food"
+                </h1>
+                <h2 id="instructionsh2">Save them to your lists!</h2>
+              </div>
+            </Grid>
             <Grid item xs={12} sm={6}>
               <Paper className="searchPaper" elevation={3}>
                 <div className="searchDiv">
@@ -81,7 +91,7 @@ class UserPage extends Component {
                         <Tooltip title="Add to Favorites">
                           <FavoriteRoundedIcon
                             id="favIcon"
-                            color="secondary"
+                            style={{ fill: "#E23D3D" }}
                             onClick={() => {
                               this.props.dispatch({
                                 type: "ADD_FAVORITE",
@@ -93,7 +103,7 @@ class UserPage extends Component {
                         <Tooltip title="Add to Want-to-Go">
                           <StarRoundedIcon
                             id="starIcon"
-                            color="primary"
+                            style={{ fill: "#ffe669" }}
                             onClick={() => {
                               this.props.dispatch({
                                 type: "ADD_WANT",
@@ -103,9 +113,9 @@ class UserPage extends Component {
                           />
                         </Tooltip>
                         <Tooltip title="Add to No-Go">
-                          <SentimentVeryDissatisfiedIcon
+                          <ThumbDownAltIcon
                             id="sadIcon"
-                            color="error"
+                            style={{ fill: "#1E8CB5" }}
                             onClick={() => {
                               this.props.dispatch({
                                 type: "ADD_NOGO",
@@ -119,14 +129,6 @@ class UserPage extends Component {
                   ))}
                 </div>
               </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <div className="instructionsDiv">
-                <h1 id="instructionsh1">
-                  Start by searching "restaurants" or "Chinese food"
-                </h1>
-                <h2 id="instructionsh2">Save them to your lists!</h2>
-              </div>
             </Grid>
           </Grid>
         </Container>
