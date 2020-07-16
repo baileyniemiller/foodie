@@ -95,6 +95,14 @@
 #placeRating {
   font-family: sans-serif;
 }
+
+#successMessage {
+  color: lightgreen;
+  font-family: sans-serif;
+  font-size: 15px;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  
+}
 /* End Results */
 
 /* Instructions section */

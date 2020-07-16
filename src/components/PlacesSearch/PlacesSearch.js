@@ -6,7 +6,6 @@ import StarRoundedIcon from "@material-ui/icons/StarRounded";
 import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
 import HomeNav from "../HomeNav/HomeNav";
 import Paper from "@material-ui/core/Paper";
-import swal from "sweetalert";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -23,6 +22,9 @@ import "./PlacesSearch.css";
 class UserPage extends Component {
   // setting local state to hold user input text
   // restaurant array of results
+  // showFav, Want and No to false --> when a user
+  // clicks an icon to add a place to their list,
+  // state will be set to true to show the success message
   state = {
     searchText: "",
     restaurant: [],
@@ -32,6 +34,7 @@ class UserPage extends Component {
   };
 
   // on the click of the GO button, this function will run and grab the results
+  // based on the user's search text
   handlePlaces = () => {
     axios.get(`/restaurants/${this.state.searchText}`).then((response) => {
       const responseData = response.data;
@@ -43,7 +46,9 @@ class UserPage extends Component {
     });
   };
 
-  // in the render function, there is the search input,
+  // in the render function, there is -->
+  // text telling the user how to start
+  // the search input,
   // the GO button, and a map of the restaurant array
   // to display the results
   render() {
