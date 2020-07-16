@@ -24,9 +24,13 @@ class ProfilePage extends Component {
     showInput: false,
   };
 
-  // when the component mounts, GET requests will be sent to grab
-  // all of the favorites, wants and nogos.
+  // when the component mounts, the getLists function will run
+  // which will send GET requests to grab all of the favorites, wants and nogos
   componentDidMount() {
+    this.getLists();
+  }
+
+  getLists = () => {
     axios.get(`/favorites/${this.props.user.id}`).then((response) => {
       const responseData = response.data;
       this.setState({
@@ -45,15 +49,15 @@ class ProfilePage extends Component {
         nogos: nogoData, //new nogos array
       });
     });
-  }
+  };
 
   // on the click of the delete button, the delete function will run.
-  // an alert will pop up for the user to confirm or cancel
+  // an alert will pop up for the user to confirm or cancel.
   // if they choose to cancel, nothing will happen!
   // if they choose to delete, then the dispatch will be sent
   // to the corresponding type, with a payload of
-  // the place that was clicked.  Then the page refreshes
-  // to get the new lists
+  // the place that was clicked.  Then getLists is ran again
+  // to reload the updated list
   handleDeleteFav = (place) => {
     swal({
       title: "Are you sure?",
@@ -66,7 +70,7 @@ class ProfilePage extends Component {
           icon: "success",
         });
         this.props.dispatch({ type: "DELETE_FAVORITE", payload: place });
-        window.location.reload(false);
+        this.getLists();
       } else {
         swal("Your restaurant is saved!");
       }
@@ -86,7 +90,7 @@ class ProfilePage extends Component {
           icon: "success",
         });
         this.props.dispatch({ type: "DELETE_WANT", payload: place });
-        window.location.reload(false);
+        this.getLists();
       } else {
         swal("Your restaurant is saved!");
       }
@@ -106,7 +110,7 @@ class ProfilePage extends Component {
           icon: "success",
         });
         this.props.dispatch({ type: "DELETE_NOGO", payload: place });
-        window.location.reload(false);
+        this.getLists();
       } else {
         swal("Your restaurant is saved!");
       }
