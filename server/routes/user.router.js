@@ -1,13 +1,15 @@
-const express = require('express');
-const { rejectUnauthenticated } = require('../modules/authentication-middleware');
-const encryptLib = require('../modules/encryption');
-const pool = require('../modules/pool');
-const userStrategy = require('../strategies/user.strategy');
+const express = require("express");
+const {
+  rejectUnauthenticated,
+} = require("../modules/authentication-middleware");
+const encryptLib = require("../modules/encryption");
+const pool = require("../modules/pool");
+const userStrategy = require("../strategies/user.strategy");
 
 const router = express.Router();
 
 // Handles Ajax request for user information if user is authenticated
-router.get('/', rejectUnauthenticated, (req, res) => {
+router.get("/", rejectUnauthenticated, (req, res) => {
   // Send back user object from the session (previously queried from the database)
   res.send(req.user);
 });
@@ -15,13 +17,15 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
-router.post('/register', (req, res, next) => {  
+router.post("/register", (req, res, next) => {
   const firstName = req.body.firstName;
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
 
-  const queryText = 'INSERT INTO "user" (first_name, username, password) VALUES ($1, $2, $3) RETURNING id';
-  pool.query(queryText, [firstName, username, password])
+  const queryText =
+    'INSERT INTO "user" (first_name, username, password) VALUES ($1, $2, $3) RETURNING id';
+  pool
+    .query(queryText, [firstName, username, password])
     .then(() => res.sendStatus(201))
     .catch(() => res.sendStatus(500));
 });
@@ -30,12 +34,12 @@ router.post('/register', (req, res, next) => {
 // userStrategy.authenticate('local') is middleware that we run on this route
 // this middleware will run our POST if successful
 // this middleware will send a 404 if not successful
-router.post('/login', userStrategy.authenticate('local'), (req, res) => {
+router.post("/login", userStrategy.authenticate("local"), (req, res) => {
   res.sendStatus(200);
 });
 
 // clear all server session information about this user
-router.post('/logout', (req, res) => {
+router.post("/logout", (req, res) => {
   // Use passport's built-in method to log out the user
   req.logout();
   res.sendStatus(200);
@@ -44,17 +48,17 @@ router.post('/logout', (req, res) => {
 // PUT /api/user/id
 router.put(`/:id`, (req, res) => {
   const newName = req.body.username;
-  const userId = req.params.id
+  const userId = req.params.id;
   // setting query text to update the username
   const queryText = `UPDATE "user" SET username=$1 WHERE id=$2`;
   const queryValue = [newName, userId];
-  console.log('New username is: ', newName);
-  console.log('User id is: ', userId);
+  console.log("New username is: ", newName);
+  console.log("User id is: ", userId);
   pool
     .query(queryText, queryValue)
     .then((result) => {
       console.log("Success in updating username!");
-      res.send(result.rows); 
+      res.send(result.rows);
     })
     .catch((error) => {
       console.log(`Error on PUT with query ${error}`);

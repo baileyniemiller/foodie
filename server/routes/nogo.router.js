@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const pool = require("../modules/pool");
-const { rejectUnauthenticated } = require('../modules/authentication-middleware');
-
+const {
+  rejectUnauthenticated,
+} = require("../modules/authentication-middleware");
 
 /* 
   In the nogo.router file, it contains the GET, POST, and DELETE
@@ -10,10 +11,9 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
   database. 
 */
 
-
 // GET /nogo
 router.get("/:id", (req, res) => {
-  console.log('GET /nogo/id');
+  console.log("GET /nogo/id");
   const userId = req.user.id;
   const queryText = `SELECT * FROM list WHERE (list_type=3 AND user_id=$1) ORDER BY name ASC`;
   const queryValue = [userId];
@@ -29,10 +29,9 @@ router.get("/:id", (req, res) => {
 });
 // end GET /nogo
 
-
 // POST /nogo
 router.post("/", rejectUnauthenticated, (req, res) => {
-  console.log('POST /nogo');
+  console.log("POST /nogo");
   if (req.isAuthenticated() === false) {
     res.sendStatus(403); //woah woah woah!!! You are not allowed
     return;
@@ -47,7 +46,13 @@ router.post("/", rejectUnauthenticated, (req, res) => {
   //set up a query to the list table to insert the user id, list_type, place name, address, and rating
   const queryText = `INSERT INTO "list" ("user_id", "list_type", "name", "address", "rating") VALUES ($1, $2, $3, $4, $5)`;
   //store the query values
-  const queryValue = [user.id, 3, newPlace.name, newPlace.formatted_address, newPlace.rating];
+  const queryValue = [
+    user.id,
+    3,
+    newPlace.name,
+    newPlace.formatted_address,
+    newPlace.rating,
+  ];
   pool
     .query(queryText, queryValue)
     .then((result) => {
@@ -60,14 +65,13 @@ router.post("/", rejectUnauthenticated, (req, res) => {
 });
 // end POST /nogo
 
-
 // DELETE /nogo
 router.delete("/", (req, res) => {
   console.log("DELETE /nogo");
   const user = req.user;
-  const place=req.body;
+  const place = req.body;
   const queryText = 'DELETE FROM "list" WHERE (user_id=$1 AND list_id=$2)';
-  const queryValue = [user.id, place.list_id] ;
+  const queryValue = [user.id, place.list_id];
   pool
     .query(queryText, queryValue)
     .then((result) => {
@@ -79,6 +83,5 @@ router.delete("/", (req, res) => {
     });
 });
 // end DELETE /nogo
-
 
 module.exports = router;

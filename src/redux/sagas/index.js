@@ -1,10 +1,10 @@
-import { all } from 'redux-saga/effects';
-import loginSaga from './loginSaga';
-import registrationSaga from './registrationSaga';
-import userSaga from './userSaga';
-import profileSaga from './profileSaga';
-import addFavoriteSaga from './addFavoriteSaga';
-import addWantSaga from './addWantSaga';
+import { all } from "redux-saga/effects";
+import loginSaga from "./loginSaga";
+import registrationSaga from "./registrationSaga";
+import userSaga from "./userSaga";
+import profileSaga from "./profileSaga";
+import addFavoriteSaga from "./addFavoriteSaga";
+import addWantSaga from "./addWantSaga";
 import addNoGoSaga from "./addNoGoSaga";
 
 // rootSaga is the primary saga.

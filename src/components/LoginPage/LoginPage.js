@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Nav from '../Nav/Nav';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Nav from "../Nav/Nav";
 
 class LoginPage extends Component {
   state = {
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   };
 
   login = (event) => {
@@ -13,22 +13,22 @@ class LoginPage extends Component {
 
     if (this.state.username && this.state.password) {
       this.props.dispatch({
-        type: 'LOGIN',
+        type: "LOGIN",
         payload: {
           username: this.state.username,
           password: this.state.password,
         },
       });
     } else {
-      this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
+      this.props.dispatch({ type: "LOGIN_INPUT_ERROR" });
     }
-  } // end login
+  }; // end login
 
-  handleInputChangeFor = propertyName => (event) => {
+  handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
       [propertyName]: event.target.value,
     });
-  }
+  };
 
   render() {
     return (
@@ -105,7 +105,7 @@ class LoginPage extends Component {
 }
 
 // Instead of taking everything from state, we just want the error messages.
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 

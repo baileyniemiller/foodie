@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const pool = require("../modules/pool");
-const { rejectUnauthenticated } = require('../modules/authentication-middleware');
-
+const {
+  rejectUnauthenticated,
+} = require("../modules/authentication-middleware");
 
 /* 
   In the favorite.router file, it contains the GET, POST, and DELETE
@@ -10,10 +11,9 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
   database. 
 */
 
-
 // GET /favorites/id
 router.get("/:id", (req, res) => {
-  console.log('GET /favorites/id');
+  console.log("GET /favorites/id");
   const userId = req.user.id;
   const queryText = `SELECT * FROM list WHERE (list_type=1 AND user_id=$1) ORDER BY name ASC`;
   const queryValue = [userId];
@@ -29,10 +29,9 @@ router.get("/:id", (req, res) => {
 });
 // end GET /favorites/id
 
-
 // POST /favorites
 router.post("/", rejectUnauthenticated, (req, res) => {
-  console.log('POST /favorites');
+  console.log("POST /favorites");
   if (req.isAuthenticated() === false) {
     res.sendStatus(403); //woah woah woah!!! You are not allowed
     return;
@@ -48,7 +47,13 @@ router.post("/", rejectUnauthenticated, (req, res) => {
   //list_type is 1 because it represents the favorites list
   const queryText = `INSERT INTO "list" ("user_id", "list_type", "name", "address", "rating") VALUES ($1, $2, $3, $4, $5)`;
   //store the query values
-  const queryValue = [user.id, 1, newPlace.name, newPlace.formatted_address, newPlace.rating];
+  const queryValue = [
+    user.id,
+    1,
+    newPlace.name,
+    newPlace.formatted_address,
+    newPlace.rating,
+  ];
   pool
     .query(queryText, queryValue)
     .then((result) => {
@@ -61,7 +66,6 @@ router.post("/", rejectUnauthenticated, (req, res) => {
 });
 // end POST /favorites
 
-
 // DELETE /favorites
 router.delete("/", (req, res) => {
   console.log("DELETE /favorites");
@@ -72,7 +76,7 @@ router.delete("/", (req, res) => {
   pool
     .query(queryText, queryValue)
     .then((result) => {
-      console.log('Success in deleting place.')
+      console.log("Success in deleting place.");
       res.sendStatus(200);
     })
     .catch((error) => {
@@ -81,6 +85,5 @@ router.delete("/", (req, res) => {
     });
 });
 // end DELETE /favorites
-
 
 module.exports = router;

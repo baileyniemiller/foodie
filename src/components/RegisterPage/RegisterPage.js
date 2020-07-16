@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import Nav from '../Nav/Nav';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Nav from "../Nav/Nav";
 
 class RegisterPage extends Component {
   state = {
-    firstName: '',
-    username: '',
-    password: '',
+    firstName: "",
+    username: "",
+    password: "",
   };
 
   registerUser = (event) => {
@@ -14,7 +14,7 @@ class RegisterPage extends Component {
 
     if (this.state.username && this.state.password) {
       this.props.dispatch({
-        type: 'REGISTER',
+        type: "REGISTER",
         payload: {
           firstName: this.state.firstName,
           username: this.state.username,
@@ -22,15 +22,15 @@ class RegisterPage extends Component {
         },
       });
     } else {
-      this.props.dispatch({type: 'REGISTRATION_INPUT_ERROR'});
+      this.props.dispatch({ type: "REGISTRATION_INPUT_ERROR" });
     }
-  } // end registerUser
+  }; // end registerUser
 
-  handleInputChangeFor = propertyName => (event) => {
+  handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
       [propertyName]: event.target.value,
     });
-  }
+  };
 
   render() {
     return (
@@ -97,9 +97,8 @@ class RegisterPage extends Component {
 }
 
 // Instead of taking everything from state, we just want the error messages.
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
 export default connect(mapStateToProps)(RegisterPage);
-
