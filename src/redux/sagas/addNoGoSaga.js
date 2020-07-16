@@ -8,7 +8,6 @@ function* addNoGo(action) {
     yield put({ type: "SET_NOGO", payload: action.payload });
   } catch (error) {
     console.log("Error with adding nogo:", error);
-    // yield put({ type: "REGISTRATION_FAILED" }); TO DO: NOGO_FAILED
   }
 }
 // end POST
@@ -17,10 +16,8 @@ function* addNoGo(action) {
 function* deleteNoGo(action) {
   try {
     yield axios.delete(`/nogo`, { data: action.payload });
-    // yield put({ type: "SET_NOGO", payload: action.payload });
   } catch (error) {
     console.log("Error with deleting nogo:", error);
-    // yield put({ type: "REGISTRATION_FAILED" }); TO DO: FAV_FAILED
   }
 }
 // end DELETE

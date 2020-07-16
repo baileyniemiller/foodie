@@ -36,14 +36,14 @@ class LoginPage extends Component {
         <div>
           <Nav />
         </div>
-        {/* {this.props.errors.loginMessage && (
+        {this.props.errors.loginMessage && (
           <h2
             className="alert"
             role="alert"
           >
             {this.props.errors.loginMessage}
           </h2>
-        )} */}
+        )}
         <form onSubmit={this.login}>
           <h1 id="login">Login</h1>
           <div>

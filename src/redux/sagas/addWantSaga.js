@@ -8,7 +8,6 @@ function* addWant(action) {
     yield put({ type: "SET_WANT", payload: action.payload });
   } catch (error) {
     console.log("Error with adding want:", error);
-    // yield put({ type: "REGISTRATION_FAILED" }); TO DO: WANT_FAILED
   }
 }
 // end POST
@@ -17,10 +16,8 @@ function* addWant(action) {
 function* deleteWant(action) {
   try {
     yield axios.delete(`/wants`, { data: action.payload });
-    // yield put({ type: "SET_FAVORITES", payload: action.payload });
   } catch (error) {
     console.log("Error with deleting want:", error);
-    // yield put({ type: "REGISTRATION_FAILED" }); TO DO: FAV_FAILED
   }
 }
 // end DELETE

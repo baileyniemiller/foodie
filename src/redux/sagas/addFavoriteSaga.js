@@ -8,7 +8,6 @@ function* addFavorite(action) {
     yield put({ type: "SET_FAVORITES", payload: action.payload });
   } catch (error) {
     console.log("Error with adding favorite:", error);
-    // yield put({ type: "REGISTRATION_FAILED" }); TO DO: FAV_FAILED
   }
 }
 // end POST
@@ -19,10 +18,8 @@ function* deleteFavorite(action) {
     yield axios.delete(`/favorites`, { data: action.payload });
     console.log(action.payload);
     console.log("I think this is deleting?");
-    // yield put({ type: "SET_FAVORITES", payload: action.payload });
   } catch (error) {
     console.log("Error with deleting favorite:", error);
-    // yield put({ type: "REGISTRATION_FAILED" }); TO DO: FAV_FAILED
   }
 }
 // end DELETE
