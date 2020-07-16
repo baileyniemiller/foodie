@@ -97,11 +97,13 @@
 }
 
 #successMessage {
-  color: lightgreen;
+  color: white;
   font-family: sans-serif;
-  font-size: 15px;
-  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-  
+  font-size: 18px;
+  background-color: #5bab54;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100px;
 }
 /* End Results */
 

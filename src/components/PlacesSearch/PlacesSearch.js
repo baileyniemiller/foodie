@@ -28,9 +28,8 @@ class UserPage extends Component {
   state = {
     searchText: "",
     restaurant: [],
+    isClicked: false,
     showFav: false,
-    showWant: false,
-    showNo: false,
   };
 
   // on the click of the GO button, this function will run and grab the results
@@ -45,6 +44,15 @@ class UserPage extends Component {
       });
     });
   };
+
+  // toggleFavorite = (place) => {
+  //   if (this.state.isClicked) {
+  //     this.setState({ showFav: true });
+  //     this.props.dispatch({ type: "ADD_FAVORITE", payload: place });
+  //   } else {
+  //     this.setState({ showFav: false });
+  //   }
+  // };
 
   // in the render function, there is -->
   // text telling the user how to start
@@ -87,6 +95,13 @@ class UserPage extends Component {
                     </button>
                   </header>
                   <br />
+                  {/* {this.state.isClicked ? (
+                    <>
+                      <p>Place Added</p>
+                    </>
+                  ) : (
+                    <></>
+                  )} */}
                   {this.state.restaurant.map((place) => (
                     <div id="resultDiv">
                       <h1 id="placeName">{place.name}</h1>
