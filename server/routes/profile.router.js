@@ -1,5 +1,3 @@
-// honestly not sure what this does...might need to come back to this.
-
 const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
