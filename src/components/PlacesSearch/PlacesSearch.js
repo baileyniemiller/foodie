@@ -9,6 +9,10 @@ import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Tooltip from "@material-ui/core/Tooltip";
+import Alert from "@material-ui/lab/Alert";
+import CheckIcon from "@material-ui/icons/Check";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 import "./PlacesSearch.css";
 
 // Places search page contains -->
@@ -22,14 +26,10 @@ import "./PlacesSearch.css";
 class UserPage extends Component {
   // setting local state to hold user input text
   // restaurant array of results
-  // showFav, Want and No to false --> when a user
-  // clicks an icon to add a place to their list,
-  // state will be set to true to show the success message
   state = {
     searchText: "",
     restaurant: [],
-    isClicked: false,
-    showFav: false,
+    setOpen: false,
   };
 
   // on the click of the GO button, this function will run and grab the results
@@ -45,14 +45,18 @@ class UserPage extends Component {
     });
   };
 
-  // toggleFavorite = (place) => {
-  //   if (this.state.isClicked) {
-  //     this.setState({ showFav: true });
-  //     this.props.dispatch({ type: "ADD_FAVORITE", payload: place });
-  //   } else {
-  //     this.setState({ showFav: false });
-  //   }
-  // };
+  handleClick = (place) => {
+    this.setState({
+      setOpen: true,
+    });
+    this.props.dispatch({ type: "ADD_FAVORITE", payload: place });
+  };
+
+  handleClose = (event, reason) => {
+    this.setState({
+      setOpen: false,
+    });
+  };
 
   // in the render function, there is -->
   // text telling the user how to start
@@ -63,6 +67,17 @@ class UserPage extends Component {
     return (
       <div className="homeBody">
         <HomeNav />
+        {this.state.setOpen ? (
+          <>
+            <Snackbar autoHideDuration={3000} onClose={this.handleClose}>
+              <Alert onClose={this.handleClose} severity="success">
+                Place has been added!
+              </Alert>
+            </Snackbar>{" "}
+          </>
+        ) : (
+          <></>
+        )}
         <Container maxWidth="lg" className="placesSearchContainer">
           <Grid container direction="row">
             <Grid item xs={12} sm={6} md={6}>
@@ -95,13 +110,6 @@ class UserPage extends Component {
                     </button>
                   </header>
                   <br />
-                  {/* {this.state.isClicked ? (
-                    <>
-                      <p>Place Added</p>
-                    </>
-                  ) : (
-                    <></>
-                  )} */}
                   {this.state.restaurant.map((place) => (
                     <div id="resultDiv">
                       <h1 id="placeName">{place.name}</h1>
@@ -113,10 +121,7 @@ class UserPage extends Component {
                             id="favIcon"
                             style={{ fill: "#E23D3D" }}
                             onClick={() => {
-                              this.props.dispatch({
-                                type: "ADD_FAVORITE",
-                                payload: place,
-                              });
+                              this.handleClick(place);
                             }}
                           />
                         </Tooltip>
