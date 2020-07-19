@@ -16,8 +16,6 @@ function* addFavorite(action) {
 function* deleteFavorite(action) {
   try {
     yield axios.delete(`/favorites`, { data: action.payload });
-    console.log(action.payload);
-    console.log("I think this is deleting?");
   } catch (error) {
     console.log("Error with deleting favorite:", error);
   }

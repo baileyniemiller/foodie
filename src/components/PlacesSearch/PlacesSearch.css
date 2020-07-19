@@ -127,3 +127,8 @@
   color: white;
 }
 /* End instructions section */
+
+p {
+  color: lightgreen;
+  font-size: 20px;
+}

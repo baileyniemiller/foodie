@@ -12,7 +12,8 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Alert from "@material-ui/lab/Alert";
 import CheckIcon from "@material-ui/icons/Check";
 import Snackbar from "@material-ui/core/Snackbar";
-import MuiAlert from "@material-ui/lab/Alert";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
 import "./PlacesSearch.css";
 
 // Places search page contains -->
@@ -45,17 +46,16 @@ class UserPage extends Component {
     });
   };
 
-  handleClick = (place) => {
-    this.setState({
-      setOpen: true,
-    });
-    this.props.dispatch({ type: "ADD_FAVORITE", payload: place });
-  };
+  // handleClick = (place) => {
+  //   this.props.dispatch({ type: "ADD_FAVORITE", payload: place });
+  //   console.log(this.state.setOpen);
+  // };
 
-  handleClose = (event, reason) => {
+  handleClose = () => {
     this.setState({
       setOpen: false,
     });
+    console.log(this.state.setOpen);
   };
 
   // in the render function, there is -->
@@ -67,17 +67,6 @@ class UserPage extends Component {
     return (
       <div className="homeBody">
         <HomeNav />
-        {this.state.setOpen ? (
-          <>
-            <Snackbar autoHideDuration={3000} onClose={this.handleClose}>
-              <Alert onClose={this.handleClose} severity="success">
-                Place has been added!
-              </Alert>
-            </Snackbar>{" "}
-          </>
-        ) : (
-          <></>
-        )}
         <Container maxWidth="lg" className="placesSearchContainer">
           <Grid container direction="row">
             <Grid item xs={12} sm={6} md={6}>
@@ -110,6 +99,26 @@ class UserPage extends Component {
                     </button>
                   </header>
                   <br />
+                  {this.state.setOpen ? (
+                    <>
+                      <Snackbar
+                        anchorOrigin={{
+                          vertical: "bottom",
+                          horizontal: "right",
+                        }}
+                        open={this.state.setOpen}
+                        autoHideDuration={6000}
+                        message="Place added!"
+                        action={
+                          <IconButton size="small" onClick={this.handleClose}>
+                            <CloseIcon fontSize="small"></CloseIcon>
+                          </IconButton>
+                        }
+                      ></Snackbar>
+                    </>
+                  ) : (
+                    <></>
+                  )}
                   {this.state.restaurant.map((place) => (
                     <div id="resultDiv">
                       <h1 id="placeName">{place.name}</h1>
@@ -121,7 +130,11 @@ class UserPage extends Component {
                             id="favIcon"
                             style={{ fill: "#E23D3D" }}
                             onClick={() => {
-                              this.handleClick(place);
+                              this.setState({ setOpen: true });
+                              this.props.dispatch({
+                                type: "ADD_FAVORITE",
+                                payload: place,
+                              });
                             }}
                           />
                         </Tooltip>
