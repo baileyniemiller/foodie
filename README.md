@@ -20,7 +20,7 @@ In the future I am planning to:
 
 ### Home Page
 
-![alt text](public/screenshots/home.png "Home Page")
+![alt text](public/screenshots/search.png "Home Page")
 
 ### Profile Page
 
