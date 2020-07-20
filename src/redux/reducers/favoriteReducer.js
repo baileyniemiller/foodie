@@ -7,4 +7,6 @@ const favoriteReducer = (state = [], action) => {
   }
 };
 
-export default favoriteReducer;
+
+module.exports = favoriteReducer;
+// export default favoriteReducer;
