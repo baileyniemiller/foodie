@@ -10,10 +10,7 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Tooltip from "@material-ui/core/Tooltip";
 import Alert from "@material-ui/lab/Alert";
-import CheckIcon from "@material-ui/icons/Check";
 import Snackbar from "@material-ui/core/Snackbar";
-import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
 import "./PlacesSearch.css";
 
 // Places search page contains -->
@@ -104,7 +101,7 @@ class UserPage extends Component {
                           horizontal: "right",
                         }}
                         open={this.state.setOpen}
-                        autoHideDuration={2000}
+                        autoHideDuration={6000}
                         onClose={this.handleClose}
                       >
                         <Alert severity="success" onClose={this.handleClose}>
@@ -139,6 +136,7 @@ class UserPage extends Component {
                             id="starIcon"
                             style={{ fill: "#ffe669" }}
                             onClick={() => {
+                              this.setState({ setOpen: true });
                               this.props.dispatch({
                                 type: "ADD_WANT",
                                 payload: place,
@@ -151,6 +149,7 @@ class UserPage extends Component {
                             id="sadIcon"
                             style={{ fill: "#1E8CB5" }}
                             onClick={() => {
+                              this.setState({ setOpen: true });
                               this.props.dispatch({
                                 type: "ADD_NOGO",
                                 payload: place,

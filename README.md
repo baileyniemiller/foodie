@@ -16,15 +16,15 @@ In the future I am planning to:
 
 ### Login Page
 
-![alt text](/screenshots/login.png "Login Page")
+![alt text](public/screenshots/login.png "Login Page")
 
 ### Home Page
 
-![alt text](/screenshots/home.png "Home Page")
+![alt text](public/screenshots/home.png "Home Page")
 
 ### Profile Page
 
-![alt text](/screenshots/profile.png "Profile Page")
+![alt text](public/screenshots/profile.png "Profile Page")
 
 ## Technologies
 
