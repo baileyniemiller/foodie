@@ -44,7 +44,7 @@ In the future I am planning to:
 3. Your profile page will have three lists: Favorites, Want-To-Go's and No-Go's
 4. Click "Update Username" to change your username
 5. You can navigate to the home page where you can search "restaurants in minneapolis" or "chinese food"
-6. You can browse the results and click the heart icon to add to favorites, the star icon to add to Want-To-Go's, and the thumbs down icon to add to No-Go's.
+6. You can browse the results and click the heart icon to add to Favorites, the star icon to add to Want-To-Go's, and the thumbs down icon to add to No-Go's.
 
 
 ## Acknowledgement
