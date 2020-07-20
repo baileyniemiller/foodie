@@ -46,16 +46,13 @@ class UserPage extends Component {
     });
   };
 
-  // handleClick = (place) => {
-  //   this.props.dispatch({ type: "ADD_FAVORITE", payload: place });
-  //   console.log(this.state.setOpen);
-  // };
-
+  // when the success message is shown after a user adds a place
+  // to their lists, this function is ran to set the state of 
+  // setOpen back to false so the message doesn't display anymore
   handleClose = () => {
     this.setState({
       setOpen: false,
     });
-    console.log(this.state.setOpen);
   };
 
   // in the render function, there is -->
@@ -107,14 +104,13 @@ class UserPage extends Component {
                           horizontal: "right",
                         }}
                         open={this.state.setOpen}
-                        autoHideDuration={6000}
-                        message="Place added!"
-                        action={
-                          <IconButton size="small" onClick={this.handleClose}>
-                            <CloseIcon fontSize="small"></CloseIcon>
-                          </IconButton>
-                        }
-                      ></Snackbar>
+                        autoHideDuration={2000}
+                        onClose={this.handleClose}
+                      >
+                        <Alert severity="success" onClose={this.handleClose}>
+                          Place added!
+                        </Alert>
+                      </Snackbar>
                     </>
                   ) : (
                     <></>
