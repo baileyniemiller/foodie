@@ -10,4 +10,26 @@ test ('GET to /favorites/id', () => {
     if (err) throw err;
     done();
   });
-})
+});
+
+test("POST to /favorites/id", () => {
+  request(app)
+    .post("/favorites/:id")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .end(function (err, res) {
+      if (err) throw err;
+      done();
+    });
+});
+
+test("DELETE to /favorites/id", () => {
+  request(app)
+    .delete("/favorites/:id")
+    .expect("Content-Type", /json/)
+    .expect(200)
+    .end(function (err, res) {
+      if (err) throw err;
+      done();
+    });
+});
